@@ -1,0 +1,113 @@
+<resources>
+    <string name="app_name">Al Quran</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="detail_fragment">Detail Fragment</string>
+    <string name="desc_fragment">desc</string>
+    <string name="image">image</string>
+    <string name="go_to_browser">Go to Browser</string>
+    <string name="list">Linear Layout</string>
+    <string name="grid">Grid Layout</string>
+    <string name="favorite_place_button">favorite_place_button</string>
+    <string name="favorite">Favorite Surat</string>
+
+
+    <string-array name="data_name">
+        <item>Istana Dalam Loka</item>
+        <item>Pulau Moyo</item>
+        <item>Pulau Kenawa</item>
+        <item>Taman Nasional Gunung Tambora</item>
+        <item>Bukit Mantar </item>
+        <item>Desa Poto</item>
+        <item>Tanjung Menangis</item>
+        <item>Pantai Jempol</item>
+        <item>Pantai Ai Lemak</item>
+        <item>Pantai Sandro Pole</item>
+    </string-array>
+
+    <string-array name="data_description">
+        <item>Bala Rea merupakan sebuah bangunan bersejarah dalam kompleks Istana Dalam Loka, memikat dengan keindahannya. Bangunan tua ini berbentuk panggung, didukung oleh 99 tiang penyangga kayu jati yang asli, mengambil inspirasi dari Asmaul Husna. Konstruksi rumah panggung berlantai dua ini, dengan kayu jati yang dikeringkan secara alami, menawarkan kekuatan dan ketahanan yang tak tergoyahkan. Anak tangga berjumlah 17, seperti jumlah rekaat shalat lima waktu, dengan pembangunan yang mirip usia bayi dalam kandungan. Bala Rea memiliki beragam ruangan, termasuk Lunyuk Agung untuk musyawarah, Lunyuk Mas untuk permaisuri, dan Ruang Dalam yang menyimpan sejarah kerajaan. Semua ini menambahkan kekayaan budaya dan sejarah yang luar biasa ke Istana Dalam Loka.</item>
+        <item>Pulau Moyo merupakan salah satu pulau yang masuk dalam wilayah Sumbawa, Nusa Tenggara Barat. Pulau kecil ini dikelilingi oleh terumbu karang yang indah. Pantai dengan air yang biru, pasir putih dan suasana yang tenang menjadi daya tarik utama yang sangat menggoda. Tidak heran jika mendiang Putri Diana pernah berlibur kemari. Wow!. Meski lokasinya cukup jauh dari ibu kota Kabupaten Sumbawa, namun fasilitas wisata yang ada di pulau ini tidak kalah dari tempat lain. Kamu bahkan bisa menginap di resort mewah kelas internasional; Amanwana. Petenis terkenal Maria Sharapova juga pernah menginap di sini, lho!</item>
+        <item>Pulau Kenawa, yang terletak di Provinsi Nusa Tenggara Barat (NTB), adalah salah satu pulau yang membentuk Gugusan Pulau Gili Bili Balu yang terletak di Kabupaten Sumbawa Barat, lebih tepatnya di Desa Pesisir, Desa Poto Tano, Kecamatan Poto Tano. Pulau ini memikat dengan keindahan alamnya, dengan pantai berpasir putih yang menawan dan air laut yang jernih. Selain itu, Pulau Kenawa juga menjadi tempat yang populer untuk aktivitas snorkeling dan menyelam, karena terumbu karang yang indah dan keanekaragaman biota lautnya. Pulau Kenawa adalah salah satu surga tersembunyi di NTB yang menawarkan pengalaman wisata alam yang luar biasa.</item>
+        <item>Taman Nasional Tambora, terletak di Provinsi Nusa Tenggara Barat, Indonesia, adalah sebuah surga alam yang menakjubkan dengan panorama yang mencakup hutan daratan rendah, hutan pegunungan, dan keberagaman hayati yang luar biasa. Diresmikan pada tanggal 11 April 2015 oleh Presiden Joko Widodo, taman nasional ini memiliki nilai sejarah yang penting terkait dengan letusan besar Gunung Tambora pada tahun 1815. Letusan tersebut mengubah lanskap secara dramatis dan menciptakan kekayaan geologis yang unik.
+            Pengunjung dapat menjelajahi situs-situs bersejarah yang menggambarkan dampak letusan tersebut, termasuk bekas kawah dan puing-puing yang masih ada. Selain itu, taman nasional ini menawarkan berbagai kegiatan outdoor, seperti pendakian yang menantang ke puncak gunung, berkemah di alam terbuka, trekking melalui hutan yang rimbun, dan bersepeda gunung di jalur yang menakjubkan.
+            Dengan 106 jenis pohon, 18 jenis epifit, 6 jenis herba, 39 jenis liana, dan 49 jenis perdu, kekayaan flora taman nasional ini menciptakan pengalaman alam yang tak terlupakan bagi para pengunjung. Menyaksikan tanaman dan satwa liar yang unik serta mengeksplorasi keindahan alam yang masih alami adalah pengalaman yang menginspirasi dan mendalam bagi mereka yang mengunjungi Taman Nasional Tambora.Taman Nasional Tambora, terletak di Provinsi Nusa Tenggara Barat, Indonesia, adalah sebuah surga alam yang menakjubkan dengan panorama yang mencakup hutan daratan rendah, hutan pegunungan, dan keberagaman hayati yang luar biasa. Diresmikan pada tanggal 11 April 2015 oleh Presiden Joko Widodo, taman nasional ini memiliki nilai sejarah yang penting terkait dengan letusan besar Gunung Tambora pada tahun 1815. Letusan tersebut mengubah lanskap secara dramatis dan menciptakan kekayaan geologis yang unik.Pengunjung dapat menjelajahi situs-situs bersejarah yang menggambarkan dampak letusan tersebut, termasuk bekas kawah dan puing-puing yang masih ada. Selain itu, taman nasional ini menawarkan berbagai kegiatan outdoor, seperti pendakian yang menantang ke puncak gunung, berkemah di alam terbuka, trekking melalui hutan yang rimbun, dan bersepeda gunung di jalur yang menakjubkan.Dengan 106 jenis pohon, 18 jenis epifit, 6 jenis herba, 39 jenis liana, dan 49 jenis perdu, kekayaan flora taman nasional ini menciptakan pengalaman alam yang tak terlupakan bagi para pengunjung. Menyaksikan tanaman dan satwa liar yang unik serta mengeksplorasi keindahan alam yang masih alami adalah pengalaman yang menginspirasi dan mendalam bagi mereka yang mengunjungi Taman Nasional Tambora.</item>
+        <item>Sumbawa Besar punya negeri di atas awan, tepatnya di Desa Mantar, Kecamatan Poto Tano. Desa yang berada di ketinggian 600 mdpl ini menyajikan matahari terbit yang akan membuat hatimu bergetar. Posisinya yang berada di ketinggian membuat Mantar mendapat julukan sebagai Negeri di Atas Awan. Kamu bisa melihat Pulau Lombok dengan Puncak Gunung Rinjani di kejauhan serta hamparan lembah hijau di kaki bukit yang menakjubkan. Belum lagi pulau-pulau kecil di sekitarnya yang bertebaran terhubung dengan lautan. Seperti Pulau Kenawa, Pulau Mendaki, Pulau Paserang, Pulau Belang, Pulau Ular, Pulau Nako dan Pulau Kalong.</item>
+        <item>Desa poto merupakan desa sentra tenun kre alang, kain tenun khas sumbawa. Desa poto terletak di Kecamatan Moyo Hilir sekitar 21 km dari sirkuit MXGP Samota Sumbawa. Di Desa Poto, sumbawa ini  tradisi menenun sangat kuat menjadikan keterampilan tersebut sebagai jati diri kaum perempuan, hal itu tergambar dalam ungkapan lokal siong tau swai, lamen no to nesek artinya bukan perempuan, jika tidak bisa menenun.Di desa poto anda dapat menyaksikan prosesn menenun kre alang dan tentu dapat membeli kain tenun khas sumbawa sebagi oleh-oleh. Jika ingin mencoba menenun pun bisa dengan meminta izin pada warga yang sedang menenun. Kre Alang memiliki warna dan berbagai macam motif yang unik dari kain tenun didaerah lain. Setiap motif kre alang memiliki makna filosofis masing-masing.</item>
+        <item>Tanjung menangis merupakan sebuah daratan yang menjorok ke lautan yang terletak di desa penyaring, Moyo Utara Sumbawa. Di Kawasan ini terdapat pantai-pantai indah yang menjadi destinasi wisata pavorit yaitu Pantai Sandro Pole, Ai Lemak dan Ai Loang. Namun di ujung tanjung ini terdapat sebuah tebing batu. Dari atas tebing batu ini pemandangan nya sangat indah, anda dapat menyaksikan sunset yang sangat indah dan juga camping disana. Selain itu disana terdapat spot diving yang sangat indah.</item>
+        <item>Pantai Jempol merupakan pantai di dekat kota sumbawa yang ramai dikunjungi wisatawan, berjarak sekitar 13 km dari sirkuit MXGP Samota Sumbawa. Di pantai jempol ini terdapat sentra kuliner makanan khas Sumbawa. Tentu tempat ini perlu anda kunjungi untuk menikmati kuliner khas sumbawa karena berbagai kuliner sumbawa memiliki cita rasa yang sangat enak dan unik. Selain itu, makan ditempat ini special karenan suasana pantai yang damai, jika anda datang di sore hari anda akan bertemu sunset dan untuk makan malam pun bisa disini. Keunikan yang lain juga beberapa warung makan menyediakan karoke dengan lagu dangdut. </item>
+        <item>Pantai ai lemak merupakan destinasi wisata yang sangat popular di Sumbawa. Jarak antara Pantai ai lemak dengan Sirkuit MXGP Samota Sumbawa sangat dekat sekitar 1,7 km.  Di Pantai Ai Lemak anda dapat menikmati keindahan alam pantai mulai dari hamparan pasir putih, keindahan bawah laut terumbu karang dan ikan yang sangat indah hingga sunset yang sangat indah. Di pantai ini anda dapat berenang, snorkling, diving dan camping</item>
+        <item>Pantai Sandro Pole berada pada Kawasan yang sama dengan pantai ai lemak. Untuk menuju ke pantai ini anda harus me-markir kendaraan di pantai Ai Lemak, kemudian berjalan kaki melewati sebuah bukut yang tidak begitu tinggi sekitar 20 menit. Untuk menuju sandropole dari ai lemak, anda dapat berjalan kaki juga menyusuri pantai yang penuh karang jika air laut sedang surut. Pantai Sandro pole relatif lebih sepi dari pantai ai lemak namun keindahan dan ketenangan nya menjadi daya tarik tersendiri. Di pantai sandro pole anda dapat berenang dipantai, bermain pasi, snorkling dan diving untuk menyaksikan keindahan bawah laut selain itu anda juga bisa camping dan menikmati sunset.</item>
+    </string-array>
+
+
+    <string-array name="data_photo">
+        <item>https://imgpile.com/images/CEbedN.jpg</item>
+        <item>https://imgpile.com/images/CEdIkx.jpg</item>
+        <item>https://imgpile.com/images/CEdnU1.jpg</item>
+        <item>https://imgpile.com/images/CEbygP.jpg</item>
+        <item>https://imgpile.com/images/CEbSHg.jpg</item>
+        <item>https://imgpile.com/images/CEd1YL.md.jpg</item>
+        <item>https://imgpile.com/images/CEdUoC.jpg</item>
+        <item>https://imgpile.com/images/CEd74j.jpg</item>
+        <item>https://imgpile.com/images/CEbjmW.jpg</item>
+        <item>https://imgpile.com/images/CEdNto.jpg</item>
+    </string-array>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+    <string name="login">Login</string>
+    <string name="password">password</string>
+    <string name="email">email</string>
+    <string name="title_signup_page">Sign Up</string>
+    <string name="name">name</string>
+    <string name="signup">Sign Up</string>
+    <string name="logout">Logout</string>
+    <string name="title_login_page">Login</string>
+    <string name="quran_logo">logo_quran</string>
+    <string name="surat_name">nama_surat</string>
+    <string name="translate_description">deskripsi</string>
+    <string name="arabic_text">nama_arab</string>
+    <string name="got_to_favorite">got_to_favorite</string>
+
+
+</resources>
