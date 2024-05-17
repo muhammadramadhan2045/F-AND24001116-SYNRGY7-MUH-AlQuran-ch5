@@ -18,5 +18,5 @@ interface SuratDao {
     suspend fun deleteSurat(surat: SuratEntity)
 
     @Query("SELECT * FROM surat WHERE nomor = :suratId")
-    suspend fun getSuratById(suratId: Int): SuratEntity
+    suspend fun getSuratById(suratId: Int): SuratEntity?
 }

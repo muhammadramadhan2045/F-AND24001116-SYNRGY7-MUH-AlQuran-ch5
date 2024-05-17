@@ -37,7 +37,7 @@ class DetailViewModel(private val repository: SuratRepository) : ViewModel() {
     val insertFavoriteSurat: LiveData<Boolean>
         get() = _insertFavoriteSurat
 
-    fun saveToFavoriteSurat(surat: Surat) {
+    fun saveToFavoriteSurat(surat: Surat, id: Int = -1) {
         viewModelScope.launch {
             try {
                 repository.insertSurat(surat)
@@ -51,6 +51,7 @@ class DetailViewModel(private val repository: SuratRepository) : ViewModel() {
     private val _deleteFavoriteSurat: MutableLiveData<Boolean> = MutableLiveData()
     val deleteFavoriteSurat: LiveData<Boolean>
         get() = _deleteFavoriteSurat
+
     fun deleteFromFavoriteSurat(surat: Surat) {
         viewModelScope.launch {
             try {
@@ -78,9 +79,6 @@ class DetailViewModel(private val repository: SuratRepository) : ViewModel() {
             }
         }
     }
-
-
-
 
 
 }

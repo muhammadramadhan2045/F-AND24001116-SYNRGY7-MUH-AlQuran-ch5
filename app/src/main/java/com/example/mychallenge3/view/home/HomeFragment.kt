@@ -111,7 +111,6 @@ class HomeFragment : Fragment() {
 
         listSurahAdapter.setOnItemClickCallback(object:ListSurahAdapter.OnItemClickCallback{
             override fun onItemClicked(data: Surat) {
-                Toast.makeText(context, data.namaLatin, Toast.LENGTH_SHORT).show()
                 val toDetailFragment = HomeFragmentDirections.actionHomeFragmentToDetailFragment(data)
                 toDetailFragment.id = data.nomor
                 toDetailFragment.namaSurat = data.namaLatin

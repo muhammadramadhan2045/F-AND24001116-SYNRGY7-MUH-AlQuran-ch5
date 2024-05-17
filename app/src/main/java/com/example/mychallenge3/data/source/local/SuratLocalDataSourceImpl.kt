@@ -9,7 +9,7 @@ class SuratLocalDataSourceImpl(private val suratDao: SuratDao) : SuratLocalDataS
         return suratDao.getSurat()
     }
 
-    override suspend fun getSuratById(suratId: Int): SuratEntity {
+    override suspend fun getSuratById(suratId: Int): SuratEntity? {
         return suratDao.getSuratById(suratId)
     }
 

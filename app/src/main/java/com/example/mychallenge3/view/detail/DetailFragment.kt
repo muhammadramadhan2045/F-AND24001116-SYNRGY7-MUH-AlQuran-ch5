@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mychallenge3.R
 import com.example.mychallenge3.adapter.ListAyatAdapter
 import com.example.mychallenge3.databinding.FragmentDetailBinding
 import com.example.mychallenge3.view.ViewModelFactory
@@ -40,7 +42,7 @@ class DetailFragment : Fragment() {
 
         val id = DetailFragmentArgs.fromBundle(arguments as Bundle).id
         val name = DetailFragmentArgs.fromBundle(arguments as Bundle).namaSurat
-        val detailSurat= DetailFragmentArgs.fromBundle(arguments as Bundle).detailSurat
+        val detailSurat = DetailFragmentArgs.fromBundle(arguments as Bundle).detailSurat
 
         binding.toolbar.title = name
 
@@ -55,9 +57,33 @@ class DetailFragment : Fragment() {
 
         detailViewModel.getSuratFromFavorite(id)
 
+        detailViewModel.insertFavoriteSurat.observe(viewLifecycleOwner) {
+            Toast.makeText(context, getString(R.string.insert_success), Toast.LENGTH_SHORT).show()
+            binding.fab.setImageResource(R.drawable.ic_bookmark)
+        }
+
+        detailViewModel.deleteFavoriteSurat.observe(viewLifecycleOwner) {
+            Toast.makeText(context, getString(R.string.delete_success), Toast.LENGTH_SHORT).show()
+            binding.fab.setImageResource(R.drawable.ic_bookmark_border)
+        }
 
 
 
+        detailViewModel.suratFavorite.observe(viewLifecycleOwner) {surat->
+            if (surat != null) {
+                binding.fab.setImageResource(R.drawable.ic_bookmark)
+            } else {
+                binding.fab.setImageResource(R.drawable.ic_bookmark_border)
+            }
+            Log.d("DetailFragmentss", "onViewCreated: $surat")
+            binding.fab.setOnClickListener {
+                if (surat == null) {
+                    detailViewModel.saveToFavoriteSurat(detailSurat)
+                } else {
+                    detailViewModel.deleteFromFavoriteSurat(detailSurat)
+                }
+            }
+        }
 
     }
 

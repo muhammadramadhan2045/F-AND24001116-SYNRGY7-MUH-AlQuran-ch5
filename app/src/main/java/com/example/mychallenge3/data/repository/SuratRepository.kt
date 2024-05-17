@@ -10,7 +10,7 @@ import com.example.mychallenge3.utils.DataMapper
 class SuratRepository(
     private val suratRemoteDataSource: SuratRemoteDataSource,
     private val suratLocalDataSource: SuratLocalDataSource
-) :ISuratRepository{
+) : ISuratRepository {
     override suspend fun getSurat(): List<Surat> {
         return suratRemoteDataSource.getSurat()
     }
@@ -26,11 +26,12 @@ class SuratRepository(
         )
     }
 
-    override suspend fun getSuraLocaltById(suratId: Int): Surat {
-        return DataMapper.mapSuratEntityToDomain(
-            suratLocalDataSource.getSuratById(suratId)
-        )
+    override suspend fun getSuraLocaltById(suratId: Int): Surat? {
+        return suratLocalDataSource.getSuratById(suratId)?.let {
+            DataMapper.mapSuratEntityToDomain(it)
+        }
     }
+
 
     override suspend fun deleteSurat(surat: Surat) {
         suratLocalDataSource.deleteSurat(

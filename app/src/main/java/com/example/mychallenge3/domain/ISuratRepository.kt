@@ -11,7 +11,7 @@ interface ISuratRepository {
 
     suspend fun insertSurat(surat: Surat)
 
-    suspend fun getSuraLocaltById(suratId: Int): Surat
+    suspend fun getSuraLocaltById(suratId: Int): Surat?
 
     suspend fun deleteSurat(surat: Surat)
 

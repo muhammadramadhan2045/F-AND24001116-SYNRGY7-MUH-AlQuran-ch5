@@ -108,6 +108,9 @@
     <string name="translate_description">deskripsi</string>
     <string name="arabic_text">nama_arab</string>
     <string name="got_to_favorite">got_to_favorite</string>
+    <string name="insert_success">Berhasil ditambahkan ke favorit</string>
+    <string name="delete_success">Data dihapus</string>
+    <string name="no_data">Tidak ada data</string>
 
 
 </resources>

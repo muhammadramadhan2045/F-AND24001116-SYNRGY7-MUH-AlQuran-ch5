@@ -1,7 +1,6 @@
 package com.example.mychallenge3.view.favorite
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.mychallenge3.R
 import com.example.mychallenge3.adapter.ListSurahAdapter
 import com.example.mychallenge3.data.model.Surat
@@ -48,6 +46,16 @@ class FavoriteFragment : Fragment() {
         activity?.title = getString(R.string.favorite)
 
         showRecyclerList()
+
+        favoriteViewModel.surat.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) {
+                binding.rvFavorite.visibility = View.GONE
+                binding.tvNoData.visibility = View.VISIBLE
+            } else {
+                binding.rvFavorite.visibility = View.VISIBLE
+                binding.tvNoData.visibility = View.GONE
+            }
+        }
     }
 
     private fun showRecyclerList() {
@@ -64,7 +72,7 @@ class FavoriteFragment : Fragment() {
             override fun onItemClicked(data: Surat) {
                 val action = FavoriteFragmentDirections.actionFavoriteFragmentToDetailFragment(data)
                 action.id = data.nomor
-                action.namaSurat = data.nama
+                action.namaSurat = data.namaLatin
                 action.detailSurat = data
                 findNavController().navigate(action)
             }
