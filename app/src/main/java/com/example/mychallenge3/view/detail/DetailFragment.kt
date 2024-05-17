@@ -1,23 +1,17 @@
 package com.example.mychallenge3.view.detail
 
-import android.content.Intent
-import android.net.Uri
+
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.example.mychallenge3.R
 import com.example.mychallenge3.adapter.ListAyatAdapter
-import com.example.mychallenge3.data.model.Surat
 import com.example.mychallenge3.databinding.FragmentDetailBinding
 import com.example.mychallenge3.view.ViewModelFactory
-import com.example.mychallenge3.view.home.HomeViewModel
 
 
 class DetailFragment : Fragment() {
@@ -47,8 +41,6 @@ class DetailFragment : Fragment() {
         val id = DetailFragmentArgs.fromBundle(arguments as Bundle).id
         val name = DetailFragmentArgs.fromBundle(arguments as Bundle).namaSurat
         val detailSurat= DetailFragmentArgs.fromBundle(arguments as Bundle).detailSurat
-        //set action bar title
-
 
         binding.toolbar.title = name
 
@@ -61,16 +53,8 @@ class DetailFragment : Fragment() {
             binding.progressBar.visibility = if (it) View.VISIBLE else View.GONE
         }
 
-
         detailViewModel.getSuratFromFavorite(id)
 
-        detailViewModel.suratFavorite.observe(viewLifecycleOwner) {
-            if (it != null) {
-                detailViewModel.saveToFavoriteSurat(it)
-            } else {
-                detailViewModel.deleteFromFavoriteSurat(detailSurat)
-            }
-        }
 
 
 
@@ -88,11 +72,6 @@ class DetailFragment : Fragment() {
         }
 
     }
-
-
-
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()
