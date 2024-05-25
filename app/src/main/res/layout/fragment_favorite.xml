@@ -13,6 +13,7 @@
         android:id="@+id/tv_no_data"
         android:text="@string/no_data"
         android:gravity="center"
+        android:fontFamily="@font/firasans_regular"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"

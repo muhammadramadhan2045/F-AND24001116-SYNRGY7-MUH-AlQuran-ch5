@@ -9,6 +9,7 @@
     android:layout_marginTop="4dp"
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="4dp"
+    android:background="@drawable/cardview_border"
     card_view:cardCornerRadius="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,13 +22,12 @@
             android:id="@+id/img_item_logo"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:contentDescription="@string/quran_logo"
             android:alpha="0.5"
+            android:contentDescription="@string/quran_logo"
             android:src="@drawable/ic_quran"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
-
 
 
         <TextView
@@ -36,8 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:fontFamily="@font/firasans_bold"
             android:textSize="16sp"
-            android:textStyle="bold"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@+id/img_item_logo"
             card_view:layout_constraintTop_toTopOf="@+id/img_item_logo"
@@ -49,6 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:ellipsize="end"
+            android:fontFamily="@font/firasans_regular"
             android:textSize="12sp"
             card_view:layout_constraintEnd_toStartOf="@+id/tv_arabic_name"
             card_view:layout_constraintStart_toStartOf="@+id/tv_item_name"
@@ -63,11 +64,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:fontFamily="@font/quran_font"
             android:textSize="20sp"
-            android:textStyle="bold"
+            card_view:layout_constraintBottom_toBottomOf="@id/tv_item_description"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="@+id/tv_item_name"
-            card_view:layout_constraintBottom_toBottomOf="@id/tv_item_description"
             tools:text="@string/arabic_text" />
 
 

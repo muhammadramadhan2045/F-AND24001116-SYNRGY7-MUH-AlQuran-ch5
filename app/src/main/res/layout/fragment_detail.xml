@@ -16,6 +16,8 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
+            app:titleTextAppearance="@font/firasans_regular"
+            app:titleTextColor="?attr/colorOnPrimary"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"/>
     </com.google.android.material.appbar.AppBarLayout>
@@ -27,8 +29,10 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintVertical_bias="0.0"
         tools:itemCount="10"
         tools:listitem="@layout/item_ayat" />
 
