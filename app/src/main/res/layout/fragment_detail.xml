@@ -16,8 +16,10 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            app:titleTextAppearance="@font/firasans_regular"
+            app:titleTextAppearance="@style/CustomToolbarTitleText"
             app:titleTextColor="?attr/colorOnPrimary"
+            app:subtitleTextColor="?attr/colorTertiaryContainer"
+            app:subtitleTextAppearance="@style/CustomToolbarSubTitleText"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"/>
     </com.google.android.material.appbar.AppBarLayout>
@@ -42,7 +44,8 @@
         android:id="@+id/fab"
         android:src="@drawable/ic_bookmark_border"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/add_to_bookmark" />
 
     <ProgressBar
         android:id="@+id/progress_bar"

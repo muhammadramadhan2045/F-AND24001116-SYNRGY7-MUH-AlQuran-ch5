@@ -45,6 +45,7 @@ class DetailFragment : Fragment() {
         val detailSurat = DetailFragmentArgs.fromBundle(arguments as Bundle).detailSurat
 
         binding.toolbar.title = name
+        binding.toolbar.subtitle = StringBuilder().append(detailSurat.arti).append(" | ").append(detailSurat.jumlahAyat).append(" ayat").toString()
 
         detailViewModel.getSuratById(id)
 

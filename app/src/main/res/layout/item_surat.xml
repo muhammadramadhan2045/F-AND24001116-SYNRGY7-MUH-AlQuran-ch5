@@ -17,7 +17,6 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
 
-
         <ImageView
             android:id="@+id/img_item_logo"
             android:layout_width="50dp"
@@ -50,6 +49,7 @@
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:fontFamily="@font/firasans_regular"
+            android:textColor="?attr/colorPrimary"
             android:textSize="12sp"
             card_view:layout_constraintEnd_toStartOf="@+id/tv_arabic_name"
             card_view:layout_constraintStart_toStartOf="@+id/tv_item_name"

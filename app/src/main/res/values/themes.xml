@@ -56,6 +56,19 @@
         <item name="postSplashScreenTheme">@style/Base.Theme.MyChallenge3</item>
     </style>
 
+    <style name="CustomToolbarTitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:fontFamily">@font/firasans_regular</item>
+    </style>
+
+    <style name="CustomToolbarSubTitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?attr/colorTertiaryContainer</item>
+        <item name="android:fontFamily">@font/firasans_regular</item>
+    </style>
+
+
 
     <style name="Theme.MyChallenge3" parent="Base.Theme.MyChallenge3" />
 </resources>
