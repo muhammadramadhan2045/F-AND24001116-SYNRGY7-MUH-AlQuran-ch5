@@ -112,6 +112,8 @@
     <string name="delete_success">Data dihapus</string>
     <string name="no_data">Tidak ada data</string>
     <string name="add_to_bookmark">Simpan surah</string>
+    <string name="salam_image">Salam</string>
+    <string name="surah">Surah</string>
 
 
 </resources>

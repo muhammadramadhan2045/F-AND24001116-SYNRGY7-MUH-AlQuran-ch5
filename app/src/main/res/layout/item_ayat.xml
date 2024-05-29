@@ -12,6 +12,7 @@
     card_view:cardCornerRadius="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_item_ayat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp">
