@@ -41,12 +41,12 @@ class   ListAyatAdapter: ListAdapter<AyatItem, ListAyatAdapter.ListAyatViewHolde
 
             val colorTertiaryContainer = resolveColorAttribute(com.google.android.material.R.attr.colorTertiaryContainer)
             val colorOnPrimary = resolveColorAttribute(com.google.android.material.R.attr.colorOnPrimary)
-                //when nomor ayat is even, set background color to white
-                if (data.nomorAyat % 2 == 1) {
-                    binding.clItemAyat.setBackgroundColor(colorTertiaryContainer).apply {  }
-                }else{
-                    binding.clItemAyat.setBackgroundColor(colorOnPrimary)
-                }
+            //when nomor ayat is even, set background color to white
+            if (data.nomorAyat % 2 == 1) {
+                binding.clItemAyat.setBackgroundColor(colorTertiaryContainer).apply {  }
+            }else{
+                binding.clItemAyat.setBackgroundColor(colorOnPrimary)
+            }
         }
 
     }
