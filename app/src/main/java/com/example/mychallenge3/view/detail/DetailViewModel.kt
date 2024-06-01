@@ -20,15 +20,21 @@ class DetailViewModel(private val suratUseCase: SuratUseCase) : ViewModel() {
     private val _loading: MutableLiveData<Boolean> = MutableLiveData()
     val loading: LiveData<Boolean> = _loading
 
+    //message
+    private val _message: MutableLiveData<String> = MutableLiveData()
+    val message: LiveData<String> = _message
+
     fun getSuratById(id: Int) {
         viewModelScope.launch {
             try {
                 _loading.value = true
                 _surat.value = suratUseCase.getSuratById(id)
+                _message.value = "Success"
                 _loading.value = false
             } catch (throwable: Throwable) {
                 _loading.value = false
                 throwable.printStackTrace()
+                _message.value = "Failed"
             }
         }
     }

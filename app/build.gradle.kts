@@ -42,7 +42,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -70,6 +69,10 @@ dependencies {
 
     //datastore
     implementation(libs.androidx.datastore.preferences)
+
+    //coroutines flow
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 
     //splash
     implementation(libs.androidx.core.splashscreen)

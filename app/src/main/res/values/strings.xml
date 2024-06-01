@@ -116,6 +116,7 @@
     <string name="surah">Surah</string>
     <string name="bismillah">بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</string>
     <string name="favorite_banner">favorite_banner</string>
+    <string name="no_internet">Tidak ada internet</string>
 
 
 </resources>

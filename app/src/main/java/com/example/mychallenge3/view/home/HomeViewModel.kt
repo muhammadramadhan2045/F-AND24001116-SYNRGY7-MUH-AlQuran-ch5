@@ -21,6 +21,11 @@ class HomeViewModel(private val suratUseCase: SuratUseCase, private val userUseC
     val loading: LiveData<Boolean> = _loading
 
 
+    //message
+    private val _message: MutableLiveData<String> = MutableLiveData()
+    val message: LiveData<String> = _message
+
+
 
     init {
         getAllSurat()
@@ -37,10 +42,12 @@ class HomeViewModel(private val suratUseCase: SuratUseCase, private val userUseC
             try {
                 _loading.value = true
                 _surat.value = suratUseCase.getSurat()
+                _message.value = "Success"
                 _loading.value = false
             } catch (throwable: Throwable) {
                 _loading.value = false
                 throwable.printStackTrace()
+                _message.value = "Failed"
             }
         }
     }

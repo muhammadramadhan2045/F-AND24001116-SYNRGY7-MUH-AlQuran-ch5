@@ -77,6 +77,23 @@ class HomeFragment : Fragment() {
             }
         }
 
+        homeViewModel.message.observe(viewLifecycleOwner) {message->
+            when (message) {
+                "Success" -> {
+                    binding.tvNoInternet.visibility = View.GONE
+                    binding.lottieAnimation.visibility = View.GONE
+                }
+                "Failed" -> {
+                    binding.tvNoInternet.visibility = View.VISIBLE
+                    binding.lottieAnimation.visibility = View.VISIBLE
+                }
+                else -> {
+                    binding.tvNoInternet.visibility = View.GONE
+                    binding.lottieAnimation.visibility = View.GONE
+                }
+            }
+        }
+
         showRecyclerList()
 
         goToFavoriteFragment()
