@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mychallenge3.R
-import com.example.mychallenge3.data.model.Surat
+import com.example.mychallenge3.domain.model.Surat
 import com.example.mychallenge3.data.source.remote.response.AyatItem
 import com.example.mychallenge3.databinding.ItemAyatBinding
 

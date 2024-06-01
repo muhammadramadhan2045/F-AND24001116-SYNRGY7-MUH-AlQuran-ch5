@@ -1,7 +1,7 @@
-package com.example.mychallenge3.utils
+package com.example.mychallenge3.data.utils
 
-import com.example.mychallenge3.data.model.DetailSurat
-import com.example.mychallenge3.data.model.Surat
+import com.example.mychallenge3.domain.model.DetailSurat
+import com.example.mychallenge3.domain.model.Surat
 import com.example.mychallenge3.data.source.local.entity.SuratEntity
 import com.example.mychallenge3.data.source.remote.response.Data
 import com.example.mychallenge3.data.source.remote.response.DataItem

@@ -1,8 +1,8 @@
-package com.example.mychallenge3.domain
+package com.example.mychallenge3.domain.repository
 
 
-import com.example.mychallenge3.data.model.DetailSurat
-import com.example.mychallenge3.data.model.Surat
+import com.example.mychallenge3.domain.model.DetailSurat
+import com.example.mychallenge3.domain.model.Surat
 
 interface ISuratRepository {
     suspend fun getSurat() : List<Surat>

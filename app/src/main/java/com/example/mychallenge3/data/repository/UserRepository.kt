@@ -1,20 +1,21 @@
 package com.example.mychallenge3.data.repository
 
-import com.example.mychallenge3.data.model.UserModel
+import com.example.mychallenge3.domain.model.UserModel
 import com.example.mychallenge3.data.pref.UserPreference
+import com.example.mychallenge3.domain.repository.IUserRepository
 import kotlinx.coroutines.flow.Flow
 
-class   UserRepository(private val userPreference: UserPreference) {
+class   UserRepository(private val userPreference: UserPreference) : IUserRepository {
 
-    suspend fun saveSession(user: UserModel) {
+    override suspend fun saveSession(user: UserModel) {
         userPreference.saveSession(user)
     }
 
-    fun getSession(): Flow<UserModel> {
+    override fun getSession(): Flow<UserModel> {
         return userPreference.getSession()
     }
 
-    suspend fun logout() {
+    override suspend fun logout() {
         userPreference.logout()
     }
 

@@ -1,4 +1,4 @@
-package com.example.mychallenge3.data.model
+package com.example.mychallenge3.domain.model
 
 data class UserModel(
     val email: String,

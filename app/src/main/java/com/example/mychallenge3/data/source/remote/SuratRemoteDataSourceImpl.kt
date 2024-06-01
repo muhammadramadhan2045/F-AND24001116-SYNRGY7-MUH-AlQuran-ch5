@@ -1,10 +1,10 @@
 package com.example.mychallenge3.data.source.remote
 
-import com.example.mychallenge3.data.model.DetailSurat
-import com.example.mychallenge3.data.model.Surat
+import com.example.mychallenge3.domain.model.DetailSurat
+import com.example.mychallenge3.domain.model.Surat
 import com.example.mychallenge3.data.source.SuratRemoteDataSource
 import com.example.mychallenge3.data.source.remote.network.ApiService
-import com.example.mychallenge3.utils.DataMapper
+import com.example.mychallenge3.data.utils.DataMapper
 
 class SuratRemoteDataSourceImpl(
     private val apiService: ApiService

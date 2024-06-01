@@ -1,11 +1,11 @@
 package com.example.mychallenge3.data.repository
 
-import com.example.mychallenge3.data.model.DetailSurat
-import com.example.mychallenge3.data.model.Surat
+import com.example.mychallenge3.domain.model.DetailSurat
+import com.example.mychallenge3.domain.model.Surat
 import com.example.mychallenge3.data.source.SuratLocalDataSource
 import com.example.mychallenge3.data.source.SuratRemoteDataSource
-import com.example.mychallenge3.domain.ISuratRepository
-import com.example.mychallenge3.utils.DataMapper
+import com.example.mychallenge3.domain.repository.ISuratRepository
+import com.example.mychallenge3.data.utils.DataMapper
 
 class SuratRepository(
     private val suratRemoteDataSource: SuratRemoteDataSource,

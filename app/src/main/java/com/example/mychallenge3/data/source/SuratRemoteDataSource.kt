@@ -1,7 +1,7 @@
 package com.example.mychallenge3.data.source
 
-import com.example.mychallenge3.data.model.DetailSurat
-import com.example.mychallenge3.data.model.Surat
+import com.example.mychallenge3.domain.model.DetailSurat
+import com.example.mychallenge3.domain.model.Surat
 
 interface   SuratRemoteDataSource {
     suspend fun getSurat() : List<Surat>

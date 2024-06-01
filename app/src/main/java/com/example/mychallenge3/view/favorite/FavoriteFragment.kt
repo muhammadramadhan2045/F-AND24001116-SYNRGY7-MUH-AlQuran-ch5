@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mychallenge3.R
 import com.example.mychallenge3.adapter.ListSurahAdapter
-import com.example.mychallenge3.data.model.Surat
+import com.example.mychallenge3.domain.model.Surat
 import com.example.mychallenge3.databinding.FragmentFavoriteBinding
 import com.example.mychallenge3.view.ViewModelFactory
 

@@ -5,12 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mychallenge3.data.model.DetailSurat
-import com.example.mychallenge3.data.model.Surat
+import com.example.mychallenge3.domain.model.DetailSurat
+import com.example.mychallenge3.domain.model.Surat
 import com.example.mychallenge3.data.repository.SuratRepository
+import com.example.mychallenge3.domain.usecase.SuratUseCase
 import kotlinx.coroutines.launch
 
-class DetailViewModel(private val repository: SuratRepository) : ViewModel() {
+class DetailViewModel(private val suratUseCase: SuratUseCase) : ViewModel() {
 
     private val _surat: MutableLiveData<DetailSurat> = MutableLiveData()
     val surat: LiveData<DetailSurat>
@@ -23,7 +24,7 @@ class DetailViewModel(private val repository: SuratRepository) : ViewModel() {
         viewModelScope.launch {
             try {
                 _loading.value = true
-                _surat.value = repository.getSuratById(id)
+                _surat.value = suratUseCase.getSuratById(id)
                 _loading.value = false
             } catch (throwable: Throwable) {
                 _loading.value = false
@@ -40,7 +41,7 @@ class DetailViewModel(private val repository: SuratRepository) : ViewModel() {
     fun saveToFavoriteSurat(surat: Surat, id: Int = -1) {
         viewModelScope.launch {
             try {
-                repository.insertSurat(surat)
+                suratUseCase.insertSurat(surat)
                 _insertFavoriteSurat.value = true
             } catch (throwable: Throwable) {
                 throwable.printStackTrace()
@@ -55,7 +56,7 @@ class DetailViewModel(private val repository: SuratRepository) : ViewModel() {
     fun deleteFromFavoriteSurat(surat: Surat) {
         viewModelScope.launch {
             try {
-                repository.deleteSurat(surat)
+                suratUseCase.deleteSurat(surat)
                 _deleteFavoriteSurat.value = true
             } catch (throwable: Throwable) {
                 throwable.printStackTrace()
@@ -71,7 +72,7 @@ class DetailViewModel(private val repository: SuratRepository) : ViewModel() {
     fun getSuratFromFavorite(id: Int) {
         viewModelScope.launch {
             try {
-                _suratFavorite.value = repository.getSuraLocaltById(
+                _suratFavorite.value = suratUseCase.getSuraLocaltById(
                     id
                 )
             } catch (throwable: Throwable) {

@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.mychallenge3.R
-import com.example.mychallenge3.data.model.UserModel
+import com.example.mychallenge3.domain.model.UserModel
 import com.example.mychallenge3.databinding.ActivityLoginBinding
 import com.example.mychallenge3.view.ViewModelFactory
 import com.example.mychallenge3.view.main.MainActivity

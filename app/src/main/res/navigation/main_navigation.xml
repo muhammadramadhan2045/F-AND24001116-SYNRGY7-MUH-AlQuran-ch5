@@ -31,7 +31,7 @@
             android:defaultValue="Surat" />
         <argument
             android:name="detailSurat"
-            app:argType="com.example.mychallenge3.data.model.Surat" />
+            app:argType="com.example.mychallenge3.domain.model.Surat" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"

@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mychallenge3.R
 import com.example.mychallenge3.adapter.ListSurahAdapter
-import com.example.mychallenge3.data.model.Surat
+import com.example.mychallenge3.domain.model.Surat
 import com.example.mychallenge3.data.source.remote.response.DataItem
 import com.example.mychallenge3.databinding.FragmentHomeBinding
 import com.example.mychallenge3.view.ViewModelFactory
