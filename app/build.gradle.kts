@@ -73,4 +73,7 @@ dependencies {
 
     //splash
     implementation(libs.androidx.core.splashscreen)
+
+    //lottie
+    implementation(libs.lottie)
 }

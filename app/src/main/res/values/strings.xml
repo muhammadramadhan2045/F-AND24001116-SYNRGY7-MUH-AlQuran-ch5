@@ -115,6 +115,7 @@
     <string name="salam_image">Salam</string>
     <string name="surah">Surah</string>
     <string name="bismillah">بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ</string>
+    <string name="favorite_banner">favorite_banner</string>
 
 
 </resources>

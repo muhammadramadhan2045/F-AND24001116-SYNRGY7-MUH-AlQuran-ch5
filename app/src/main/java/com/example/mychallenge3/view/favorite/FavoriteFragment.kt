@@ -51,9 +51,11 @@ class FavoriteFragment : Fragment() {
             if (it.isEmpty()) {
                 binding.rvFavorite.visibility = View.GONE
                 binding.tvNoData.visibility = View.VISIBLE
+                binding.lottieAnimation.visibility = View.VISIBLE
             } else {
                 binding.rvFavorite.visibility = View.VISIBLE
                 binding.tvNoData.visibility = View.GONE
+                binding.lottieAnimation.visibility = View.GONE
             }
         }
     }
