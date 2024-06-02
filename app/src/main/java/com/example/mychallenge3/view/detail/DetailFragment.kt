@@ -8,21 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mychallenge3.R
 import com.example.mychallenge3.adapter.ListAyatAdapter
 import com.example.mychallenge3.databinding.FragmentDetailBinding
-import com.example.mychallenge3.view.ViewModelFactory
 
 
 class DetailFragment : Fragment() {
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
 
-    private val detailViewModel: DetailViewModel by viewModels {
-        ViewModelFactory.getInstance(requireContext())
-    }
+    private val detailViewModel: DetailViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

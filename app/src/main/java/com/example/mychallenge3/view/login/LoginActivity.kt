@@ -3,7 +3,6 @@ package com.example.mychallenge3.view.login
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,14 +10,12 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.mychallenge3.R
 import com.example.mychallenge3.domain.model.UserModel
 import com.example.mychallenge3.databinding.ActivityLoginBinding
-import com.example.mychallenge3.view.ViewModelFactory
 import com.example.mychallenge3.view.main.MainActivity
 import com.example.mychallenge3.view.signup.SignUpActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : AppCompatActivity() {
-    private val viewModel by viewModels<LoginViewModel> {
-        ViewModelFactory.getInstance(this)
-    }
+    private val viewModel: LoginViewModel by viewModel()
     private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

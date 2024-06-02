@@ -5,14 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mychallenge3.R
 import com.example.mychallenge3.adapter.ListSurahAdapter
 import com.example.mychallenge3.domain.model.Surat
 import com.example.mychallenge3.databinding.FragmentFavoriteBinding
-import com.example.mychallenge3.view.ViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteFragment : Fragment() {
 
@@ -22,10 +21,7 @@ class FavoriteFragment : Fragment() {
 
 
 
-    private val favoriteViewModel: FavoriteViewModel by viewModels {
-        ViewModelFactory.getInstance(requireContext())
-    }
-
+    private val favoriteViewModel: FavoriteViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

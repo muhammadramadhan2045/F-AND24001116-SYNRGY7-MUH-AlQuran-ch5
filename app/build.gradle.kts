@@ -74,6 +74,11 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
+    //dependency injection koin
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+
+
     //splash
     implementation(libs.androidx.core.splashscreen)
 

@@ -5,24 +5,16 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.mychallenge3.R
 import com.example.mychallenge3.adapter.ListSurahAdapter
 import com.example.mychallenge3.domain.model.Surat
-import com.example.mychallenge3.data.source.remote.response.DataItem
 import com.example.mychallenge3.databinding.FragmentHomeBinding
-import com.example.mychallenge3.view.ViewModelFactory
 import com.example.mychallenge3.view.login.LoginActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class HomeFragment : Fragment() {
@@ -32,9 +24,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
 
-    private val homeViewModel: HomeViewModel by viewModels {
-        ViewModelFactory.getInstance(requireContext())
-    }
+    private val homeViewModel: HomeViewModel by viewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
