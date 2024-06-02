@@ -1,8 +1,7 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-parcelize")
-    id("androidx.navigation.safeargs")
     id("com.google.devtools.ksp")
 }
 
@@ -11,17 +10,14 @@ apply{
 }
 
 android {
-    namespace = "com.example.mychallenge3"
+    namespace = "com.example.mychallenge3.domain"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.mychallenge3"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -40,23 +36,8 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures{
-        viewBinding = true
-    }
 }
 
 dependencies {
-    // Dependency on a local library module
-    implementation(project(":data"))
-    implementation(project(":domain"))
-
-    // Dependency on local binaries
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-
-
-    //splash
-    implementation(libs.androidx.core.splashscreen)
-
-    //lottie
-    implementation(libs.lottie)
 }

@@ -1,9 +1,8 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    id("kotlin-parcelize")
-    id("androidx.navigation.safeargs")
     id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
 }
 
 apply{
@@ -11,17 +10,14 @@ apply{
 }
 
 android {
-    namespace = "com.example.mychallenge3"
+    namespace = "com.example.mychallenge3.data"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.mychallenge3"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -33,6 +29,10 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -40,23 +40,28 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures{
-        viewBinding = true
-    }
 }
 
 dependencies {
-    // Dependency on a local library module
-    implementation(project(":data"))
     implementation(project(":domain"))
 
     // Dependency on local binaries
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
+    //room
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
 
-    //splash
-    implementation(libs.androidx.core.splashscreen)
+    //retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
 
-    //lottie
-    implementation(libs.lottie)
+    //datastore
+    implementation(libs.androidx.datastore.preferences)
+
+    //coroutines flow
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 }

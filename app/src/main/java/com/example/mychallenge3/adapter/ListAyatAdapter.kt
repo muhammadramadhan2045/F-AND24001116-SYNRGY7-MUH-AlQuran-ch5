@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mychallenge3.R
 import com.example.mychallenge3.domain.model.Surat
-import com.example.mychallenge3.data.source.remote.response.AyatItem
 import com.example.mychallenge3.databinding.ItemAyatBinding
+import com.example.mychallenge3.domain.model.Ayat
 
-class   ListAyatAdapter: ListAdapter<AyatItem, ListAyatAdapter.ListAyatViewHolder>(DIFF_CALLBACK){
+class   ListAyatAdapter: ListAdapter<Ayat, ListAyatAdapter.ListAyatViewHolder>(DIFF_CALLBACK){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -22,7 +22,7 @@ class   ListAyatAdapter: ListAdapter<AyatItem, ListAyatAdapter.ListAyatViewHolde
     }
 
     class ListAyatViewHolder(private val binding: ItemAyatBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: AyatItem) {
+        fun bind(data: Ayat) {
             binding.tvIdAyat.text = data.nomorAyat.toString()
             binding.tvArabicAyat.text = data.teksArab
             binding.tvLatinAyat.text = data.teksLatin
@@ -57,12 +57,12 @@ class   ListAyatAdapter: ListAdapter<AyatItem, ListAyatAdapter.ListAyatViewHolde
     }
 
     companion object{
-        val DIFF_CALLBACK=object : DiffUtil.ItemCallback<AyatItem>(){
-            override fun areItemsTheSame(oldItem: AyatItem, newItem: AyatItem): Boolean {
+        val DIFF_CALLBACK=object : DiffUtil.ItemCallback<Ayat>(){
+            override fun areItemsTheSame(oldItem: Ayat, newItem: Ayat): Boolean {
                 return oldItem==newItem
             }
 
-            override fun areContentsTheSame(oldItem: AyatItem, newItem: AyatItem): Boolean {
+            override fun areContentsTheSame(oldItem: Ayat, newItem: Ayat): Boolean {
                 return oldItem==newItem
             }
 

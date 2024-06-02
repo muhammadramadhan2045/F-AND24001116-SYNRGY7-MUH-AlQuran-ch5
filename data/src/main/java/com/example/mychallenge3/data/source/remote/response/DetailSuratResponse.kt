@@ -1,6 +1,5 @@
 package com.example.mychallenge3.data.source.remote.response
 
-import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
@@ -17,7 +16,7 @@ data class DetailSuratResponse(
 	val message: String
 )
 
-@Parcelize
+
 data class AyatItem(
 
 	@field:SerializedName("teksArab")
@@ -31,7 +30,7 @@ data class AyatItem(
 
 	@field:SerializedName("teksIndonesia")
 	val teksIndonesia: String
-):Parcelable
+)
 
 data class Data(
 

@@ -5,6 +5,7 @@ import com.example.mychallenge3.domain.model.Surat
 import com.example.mychallenge3.data.source.local.entity.SuratEntity
 import com.example.mychallenge3.data.source.remote.response.Data
 import com.example.mychallenge3.data.source.remote.response.DataItem
+import com.example.mychallenge3.domain.model.Ayat
 
 object DataMapper {
 
@@ -53,7 +54,14 @@ object DataMapper {
         return DetailSurat(
             nama = input.nama,
             arti = input.arti,
-            ayat = input.ayat,
+            ayat = input.ayat.map {
+                Ayat(
+                    teksLatin = it.teksLatin,
+                    teksArab = it.teksArab,
+                    teksIndonesia = it.teksIndonesia,
+                    nomorAyat = it.nomorAyat
+                )
+            },
             namaLatin = input.namaLatin,
             nomor = input.nomor,
             jumlahAyat = input.jumlahAyat,

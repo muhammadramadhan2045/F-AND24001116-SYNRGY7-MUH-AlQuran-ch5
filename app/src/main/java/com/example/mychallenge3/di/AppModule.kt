@@ -9,7 +9,6 @@ import com.example.mychallenge3.view.favorite.FavoriteViewModel
 import com.example.mychallenge3.view.home.HomeViewModel
 import com.example.mychallenge3.view.login.LoginViewModel
 import com.example.mychallenge3.view.main.MainViewModel
-import okhttp3.internal.platform.android.BouncyCastleSocketAdapter.Companion.factory
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
