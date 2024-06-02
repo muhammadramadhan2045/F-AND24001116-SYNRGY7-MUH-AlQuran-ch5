@@ -4,6 +4,7 @@ import com.example.mychallenge3.domain.usecase.SuratInteractor
 import com.example.mychallenge3.domain.usecase.SuratUseCase
 import com.example.mychallenge3.domain.usecase.UserInteractor
 import com.example.mychallenge3.domain.usecase.UserUseCase
+import com.example.mychallenge3.view.profile.BlurViewModel
 import com.example.mychallenge3.view.detail.DetailViewModel
 import com.example.mychallenge3.view.favorite.FavoriteViewModel
 import com.example.mychallenge3.view.home.HomeViewModel
@@ -24,4 +25,5 @@ val viewModelModule = module{
     viewModel { FavoriteViewModel(get()) }
     viewModel { MainViewModel(get()) }
     viewModel { LoginViewModel(get()) }
+    viewModel { BlurViewModel(get()) }
 }

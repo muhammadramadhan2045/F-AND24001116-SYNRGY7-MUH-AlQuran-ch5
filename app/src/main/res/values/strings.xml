@@ -121,6 +121,11 @@
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
     <string name="ikon_kamera">ikon kamera</string>
+    <string name="blur">Blur</string>
+    <string name="cancel">Cancel</string>
+    <string name="level_1">Level 1</string>
+    <string name="level_2">Level 2</string>
+    <string name="level_3">Level 3</string>
 
 
 </resources>

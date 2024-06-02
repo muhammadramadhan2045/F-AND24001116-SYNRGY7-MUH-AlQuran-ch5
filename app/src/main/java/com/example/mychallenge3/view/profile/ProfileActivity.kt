@@ -4,23 +4,30 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.airbnb.lottie.utils.Utils
+import androidx.lifecycle.Observer
+import androidx.work.WorkInfo
 import com.example.mychallenge3.R
 import com.example.mychallenge3.databinding.ActivityProfileBinding
+import com.example.mychallenge3.worker.KEY_IMAGE_URI
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileBinding
 
     private var currentImageUri: Uri? = null
+
+    private val viewModel: BlurViewModel by viewModel()
 
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -61,11 +68,84 @@ class ProfileActivity : AppCompatActivity() {
             openCamera()
         }
 
+        binding.btBlur.setOnClickListener {
+            viewModel.applyBlur(blurLevel)
+        }
+
+        binding.btCancel.setOnClickListener {
+            viewModel.cancelWork()
+        }
+
+        viewModel.outputWorkInfos.observe(this, workInfosObserver())
+
     }
+
+    private fun workInfosObserver(): Observer<List<WorkInfo>> {
+        return Observer { listOfWorkInfo ->
+
+            // Note that these next few lines grab a single WorkInfo if it exists
+            // This code could be in a Transformation in the ViewModel; they are included here
+            // so that the entire process of displaying a WorkInfo is in one location.
+
+            // If there are no matching work info, do nothing
+            if (listOfWorkInfo.isEmpty()) {
+                return@Observer
+            }
+
+            // We only care about the one output status.
+            // Every continuation has only one worker tagged TAG_OUTPUT
+            val workInfo = listOfWorkInfo[0]
+
+            if (workInfo.state.isFinished) {
+                showWorkFinished()
+
+                // Normally this processing, which is not directly related to drawing views on
+                // screen would be in the ViewModel. For simplicity we are keeping it here.
+                val outputImageUri = workInfo.outputData.getString(KEY_IMAGE_URI)
+
+                // If there is an output file show "See File" button
+                if (!outputImageUri.isNullOrEmpty()) {
+                    viewModel.setOutputUri(outputImageUri)
+                    binding.previewImageView.setImageURI(outputImageUri.toUri())
+                }
+            } else {
+                showWorkInProgress()
+            }
+        }
+    }
+
+    private fun showWorkInProgress() {
+        with(binding) {
+            progressBar.visibility = View.VISIBLE
+            btCancel.visibility = View.VISIBLE
+            btBlur.visibility = View.GONE
+        }
+    }
+
+    /**
+     * Shows and hides views for when the Activity is done processing an image
+     */
+    private fun showWorkFinished() {
+        with(binding) {
+            progressBar.visibility = View.GONE
+            btCancel.visibility = View.GONE
+            btBlur.visibility = View.VISIBLE
+        }
+    }
+
+    private val blurLevel: Int
+        get() =
+            when (binding.radioBlurGroup.checkedRadioButtonId) {
+                R.id.radio_blur_lv_1 -> 1
+                R.id.radio_blur_lv_2 -> 2
+                R.id.radio_blur_lv_3 -> 3
+                else -> 1
+            }
 
     private fun openCamera(){
         currentImageUri = getImageUri(this)
         launcherIntentCamera.launch(currentImageUri!!)
+
 
     }
 
@@ -74,6 +154,7 @@ class ProfileActivity : AppCompatActivity() {
     ) { isSuccess ->
         if (isSuccess) {
             showImage()
+            viewModel.setImageUri(currentImageUri!!)
         }
     }
 
@@ -96,6 +177,7 @@ class ProfileActivity : AppCompatActivity() {
         if (uri != null) {
             currentImageUri = uri
             showImage()
+            viewModel.setImageUri(uri)
         } else {
             Log.d("Photo Picker", "No image selected")
         }
@@ -103,7 +185,6 @@ class ProfileActivity : AppCompatActivity() {
 
     companion object {
         private const val REQUIRED_PERMISSION = android.Manifest.permission.CAMERA
-        private const val REQUIERD_PERMISSION_STORAGE = android.Manifest.permission.READ_EXTERNAL_STORAGE
     }
 
 }
