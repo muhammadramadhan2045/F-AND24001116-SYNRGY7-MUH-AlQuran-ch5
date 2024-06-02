@@ -42,6 +42,7 @@ android {
     }
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -59,4 +60,7 @@ dependencies {
 
     //lottie
     implementation(libs.lottie)
+
+    //work manager
+    implementation(libs.androidx.work.runtime.ktx)
 }
