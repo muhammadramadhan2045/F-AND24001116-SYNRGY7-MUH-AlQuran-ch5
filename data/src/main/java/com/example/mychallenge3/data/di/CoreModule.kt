@@ -1,6 +1,7 @@
-package com.example.mychallenge3.data.di
+    package com.example.mychallenge3.data.di
 
 import androidx.room.Room
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.mychallenge3.data.pref.UserPreference
 import com.example.mychallenge3.data.pref.dataStore
 import com.example.mychallenge3.data.repository.SuratRepository
@@ -37,6 +38,7 @@ val networkModule = module {
     single {
         OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(ChuckerInterceptor(androidContext()))
             .connectTimeout(120,TimeUnit.SECONDS)
             .readTimeout(120,TimeUnit.SECONDS)
             .build()

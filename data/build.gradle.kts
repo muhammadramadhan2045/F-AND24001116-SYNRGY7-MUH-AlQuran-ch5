@@ -64,4 +64,8 @@ dependencies {
     //coroutines flow
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
+
+    //chucker
+    debugImplementation(libs.library)
+    releaseImplementation(libs.library.no.op)
 }

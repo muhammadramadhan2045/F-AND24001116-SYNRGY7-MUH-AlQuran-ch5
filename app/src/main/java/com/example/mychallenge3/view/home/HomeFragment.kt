@@ -27,11 +27,6 @@ class HomeFragment : Fragment() {
 
     private val homeViewModel: HomeViewModel by viewModel()
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,7 +54,7 @@ class HomeFragment : Fragment() {
                     true
                 }
                 R.id.menu_profile -> {
-                    val intent = Intent(context, ProfileActivity::class.java)
+                    val intent = Intent(context, ProfileActivity    ::class.java)
                     startActivity(intent)
 
                     true
