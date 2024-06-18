@@ -25,7 +25,7 @@
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars"
-            android:contentDescription="photo" />
+            android:contentDescription="@string/photo" />
 
         <TextView
             android:id="@+id/tv_item_name"
@@ -39,7 +39,7 @@
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@+id/img_item_photo"
             card_view:layout_constraintTop_toTopOf="@+id/img_item_photo"
-            tools:text="nama_tempat" />
+            tools:text="@string/nama_template" />
 
         <TextView
             android:id="@+id/tv_item_description"
@@ -53,7 +53,7 @@
             card_view:layout_constraintStart_toStartOf="@+id/tv_item_name"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_item_name"
             card_view:layout_constraintVertical_bias="0.0"
-            tools:text="deskripsi" />
+            tools:text="@string/deskripsi" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
