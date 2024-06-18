@@ -34,7 +34,7 @@ android {
                 "proguard-rules.pro"
             )
         }
-        create("staging"){
+        create("demo"){
             isMinifyEnabled = true
             isDebuggable = true
             applicationIdSuffix = ".staging"
@@ -45,6 +45,7 @@ android {
         }
         release {
             isMinifyEnabled = true
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -59,7 +60,7 @@ android {
             applicationIdSuffix = ".free"
             versionNameSuffix = "-free"
         }
-        create("paid") {
+        create("premium") {
             dimension = "version"
             applicationIdSuffix = ".paid"
             versionNameSuffix = "-paid"
