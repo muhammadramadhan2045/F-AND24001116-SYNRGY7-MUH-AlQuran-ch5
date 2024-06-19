@@ -24,7 +24,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:contentDescription="@string/favorite_banner"
+            android:contentDescription="@string/profile_banner"
             android:scaleType="centerCrop"
             android:src="@drawable/bg_welcome" />
 
