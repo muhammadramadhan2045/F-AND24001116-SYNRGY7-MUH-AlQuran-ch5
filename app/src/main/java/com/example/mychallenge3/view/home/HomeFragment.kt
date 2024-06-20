@@ -45,20 +45,6 @@ class HomeFragment : Fragment() {
         binding.toolbar.inflateMenu(R.menu.menu_main)
         binding.toolbar.setOnMenuItemClickListener {
             when(it.itemId){
-                R.id.menu_logout -> {
-                    homeViewModel.logout()
-                    val intent = Intent(context, LoginActivity::class.java).apply {
-                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    }
-                    startActivity(intent)
-                    true
-                }
-                R.id.menu_profile -> {
-                    val intent = Intent(context, ProfileActivity    ::class.java)
-                    startActivity(intent)
-
-                    true
-                }
                 R.id.menu_favorite -> {
                     val toFavoriteFragment = HomeFragmentDirections.actionHomeFragmentToFavoriteFragment()
                     findNavController().navigate(toFavoriteFragment)

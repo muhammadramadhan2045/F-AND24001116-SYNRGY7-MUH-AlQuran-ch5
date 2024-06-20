@@ -7,17 +7,105 @@
     android:layout_height="match_parent"
     tools:context=".view.main.MainActivity">
 
-    
-    <androidx.fragment.app.FragmentContainerView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/container"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/main_navigation"
+        android:contentDescription="@string/bg_mosque"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_mosque"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/quran_logo"
+        android:src="@drawable/ic_quran"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_read_quran"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/firasans_semibold"
+        android:padding="10dp"
+        android:text="@string/read_quran"
+        android:textColor="@color/md_theme_onPrimary"
+        android:textSize="18sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_logo"
+        app:strokeColor="@color/md_theme_onPrimary"
+        app:strokeWidth="2.5dp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_profile"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/firasans_semibold"
+        android:padding="10dp"
+        android:text="@string/profile"
+        android:textColor="@color/md_theme_onPrimary"
+        android:textSize="18sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_read_quran"
+        app:layout_constraintStart_toStartOf="@+id/btn_read_quran"
+        app:layout_constraintTop_toBottomOf="@+id/btn_read_quran"
+        app:strokeColor="@color/md_theme_onPrimary"
+        app:strokeWidth="2.5dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_prayer_time"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/firasans_semibold"
+        android:padding="10dp"
+        android:text="@string/prayer_time"
+        android:textColor="@color/md_theme_onPrimary"
+        android:textSize="18sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_profile"
+        app:layout_constraintStart_toStartOf="@+id/btn_profile"
+        app:layout_constraintTop_toBottomOf="@+id/btn_profile"
+        app:strokeColor="@color/md_theme_onPrimary"
+        app:strokeWidth="2.5dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_logout"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/firasans_semibold"
+        android:padding="10dp"
+        android:text="@string/logout"
+        android:textColor="@color/md_theme_onPrimary"
+        android:textSize="18sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btn_prayer_time"
+        app:layout_constraintTop_toBottomOf="@+id/btn_prayer_time"
+        app:strokeColor="@color/md_theme_onPrimary"
+        app:strokeWidth="2.5dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -130,6 +130,9 @@
     <string name="nama_template">nama_template</string>
     <string name="deskripsi">deskripsi</string>
     <string name="profile_banner">Profile Banner</string>
+    <string name="read_quran">Baca Quran</string>
+    <string name="prayer_time">Jadwal Sholat</string>
+    <string name="bg_mosque">backround masjid</string>
 
 
 </resources>
