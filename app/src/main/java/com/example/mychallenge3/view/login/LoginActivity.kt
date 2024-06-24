@@ -2,6 +2,7 @@ package com.example.mychallenge3.view.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -36,23 +37,63 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
     private fun setupAction() {
         binding.loginButton.setOnClickListener {
             val email = binding.emailEditText.text.toString()
-            viewModel.saveSession(UserModel(email, "sample_token"))
-            AlertDialog.Builder(this).apply {
-                setTitle("Yeah!")
-                setMessage("Anda berhasil login. Sudah tidak sabar untuk belajar ya?")
-                setPositiveButton("Lanjut") { _, _ ->
-                    val intent = Intent(context, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(intent)
-                    finish()
+            val password = binding.passwordEditText.text.toString()
+
+            if (email.isEmpty() || password.isEmpty()) {
+                AlertDialog.Builder(this).apply {
+                    setTitle(getString(R.string.oops))
+                    setMessage(getString(R.string.auth_validation))
+                    setPositiveButton("OK") { _, _ -> }
+                    create()
+                    show()
                 }
-                create()
-                show()
+            } else {
+                viewModel.login(email, password)
+            }
+        }
+
+        viewModel.loading.observe(this) {
+            binding.viewFlipper.displayedChild = if (it) 1 else 0
+        }
+
+        viewModel.loginResult.observe(this) { result ->
+            result.onSuccess {
+                val token = it.loginResult?.token ?: ""
+                viewModel.saveSession(
+                    UserModel(
+                        email = binding.emailEditText.text.toString(),
+                        token = token
+                    )
+                )
+                AlertDialog.Builder(this).apply {
+                    setTitle(getString(R.string.yeah))
+                    setMessage(getString(R.string.login_success_msg))
+                    setPositiveButton(getString(R.string.lanjut)) { _, _ ->
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                        finish()
+                    }
+                    create()
+                    show()
+                }
+            }
+            result.onFailure {
+                AlertDialog.Builder(this).apply {
+                    setTitle(getString(R.string.oops))
+                    setMessage(getString(R.string.logn_failed_msg))
+                    setPositiveButton(getString(R.string.ok)) { _, _ -> }
+                    create()
+                    show()
+                }
             }
         }
     }
+
 
 }

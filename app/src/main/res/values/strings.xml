@@ -133,6 +133,16 @@
     <string name="read_quran">Baca Quran</string>
     <string name="prayer_time">Jadwal Sholat</string>
     <string name="bg_mosque">backround masjid</string>
+    <string name="last_read">Terakhir baca</string>
+    <string name="first_surah">Al-Fatihah</string>
+    <string name="continue_to_read">Lanjutkan</string>
+    <string name="logn_failed_msg">Login gagal: Pastikan email dan password benar</string>
+    <string name="oops">Oops!</string>
+    <string name="ok">OK</string>
+    <string name="login_success_msg">Anda berhasil login. Sudah tidak sabar untuk belajar ya?</string>
+    <string name="lanjut">Lanjut</string>
+    <string name="yeah">Yeah!</string>
+    <string name="auth_validation">Email dan password tidak boleh kosong</string>
 
 
 </resources>

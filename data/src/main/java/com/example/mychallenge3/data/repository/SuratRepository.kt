@@ -13,17 +13,6 @@ class SuratRepository(
 ) : ISuratRepository {
 
 
-    companion object{
-        @Volatile
-        private var instance: SuratRepository? = null
-        fun getInstance(
-            suratRemoteDataSource: SuratRemoteDataSource,
-            suratLocalDataSource: SuratLocalDataSource
-        ): SuratRepository =
-            instance ?: synchronized(this) {
-                instance ?: SuratRepository(suratRemoteDataSource, suratLocalDataSource)
-            }
-    }
     override suspend fun getSurat(): List<Surat> {
         return suratRemoteDataSource.getSurat()
     }

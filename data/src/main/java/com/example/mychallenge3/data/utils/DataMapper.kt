@@ -5,7 +5,10 @@ import com.example.mychallenge3.domain.model.Surat
 import com.example.mychallenge3.data.source.local.entity.SuratEntity
 import com.example.mychallenge3.data.source.remote.response.Data
 import com.example.mychallenge3.data.source.remote.response.DataItem
+import com.example.mychallenge3.data.source.remote.response.LoginResponse
 import com.example.mychallenge3.domain.model.Ayat
+import com.example.mychallenge3.domain.model.Login
+import com.example.mychallenge3.domain.model.LoginResult
 
 object DataMapper {
 
@@ -67,6 +70,20 @@ object DataMapper {
             jumlahAyat = input.jumlahAyat,
             deskripsi = input.deskripsi,
             tempatTurun = input.tempatTurun,
+        )
+    }
+
+    fun mapLoginResponseToDomain(input: LoginResponse): Login {
+        return Login(
+            error = input.error!!,
+            message = input.message!!,
+            loginResult = input.loginResult?.let {
+                LoginResult(
+                    name = it.name!!,
+                    userId = it.userId!!,
+                    token = it.token!!
+                )
+            }
         )
     }
 

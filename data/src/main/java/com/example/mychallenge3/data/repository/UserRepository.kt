@@ -1,11 +1,14 @@
 package com.example.mychallenge3.data.repository
 
+import com.example.mychallenge3.data.di.repositoryModule
 import com.example.mychallenge3.domain.model.UserModel
 import com.example.mychallenge3.data.pref.UserPreference
+import com.example.mychallenge3.data.source.AuthRemoteDataSource
+import com.example.mychallenge3.domain.model.Login
 import com.example.mychallenge3.domain.repository.IUserRepository
 import kotlinx.coroutines.flow.Flow
 
-class UserRepository(private val userPreference: UserPreference) : IUserRepository {
+class UserRepository(private val userPreference: UserPreference,private val authRemoteDataSource: AuthRemoteDataSource) : IUserRepository {
 
 
     override suspend fun saveSession(user: UserModel) {
@@ -20,14 +23,13 @@ class UserRepository(private val userPreference: UserPreference) : IUserReposito
         userPreference.logout()
     }
 
-    companion object {
-        @Volatile
-        private var instance: UserRepository? = null
-        fun getInstance(
-            userPreference: UserPreference
-        ): UserRepository =
-            instance ?: synchronized(this) {
-                instance ?: UserRepository(userPreference)
-            }.also { instance = it }
+    override suspend fun login(email: String, password: String) :Login?{
+        return authRemoteDataSource.login(email, password)
     }
+
+    override suspend fun register(name: String, email: String, password: String): String {
+        return authRemoteDataSource.register(name, email, password)
+    }
+
+
 }

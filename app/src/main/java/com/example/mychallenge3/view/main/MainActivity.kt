@@ -15,6 +15,9 @@ import com.example.mychallenge3.view.favorite.FavoriteFragment
 import com.example.mychallenge3.view.login.LoginActivity
 import com.example.mychallenge3.view.profile.ProfileActivity
 import com.example.mychallenge3.view.quran.QuranActivity
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
@@ -38,20 +41,23 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
+            binding?.tvUserName?.text = user.email
         }
 
 
-        binding?.btnReadQuran?.setOnClickListener {
+
+        binding?.tvDayDate?.text = getCurrentTime()
+        binding?.cvReadQuran?.setOnClickListener {
             startActivity(Intent(this, QuranActivity::class.java))
         }
 
 
-        binding?.btnProfile?.setOnClickListener {
+        binding?.cvMuslimProfile?.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 
 
-        binding?.btnPrayerTime?.setOnClickListener {
+        binding?.cvPrayTime?.setOnClickListener {
             AlertDialog.Builder(this)
                 .setTitle("Segera Hadir")
                 .setMessage("Fitur ini akan segera hadir, tunggu update selanjutnya ya!")
@@ -64,11 +70,16 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        binding?.btnLogout?.setOnClickListener {
+        binding?.cvLogOut?.setOnClickListener {
             viewModel.logout()
         }
 
 
+    }
+    private fun getCurrentTime(): String {
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat("EEEE, dd MMM", Locale.getDefault())
+        return dateFormat.format(calendar.time)
     }
 
 }
