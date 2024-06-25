@@ -68,16 +68,36 @@
         app:layout_constraintTop_toBottomOf="@id/cv_salam"
         tools:listitem="@layout/item_surat" />
 
-
-    <ProgressBar
+    <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/cv_salam"
+        app:shimmer_auto_start="true">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <include layout="@layout/item_surat_placeholders" />
+                <include layout="@layout/item_surat_placeholders" />
+                <include layout="@layout/item_surat_placeholders" />
+                <include layout="@layout/item_surat_placeholders" />
+                <include layout="@layout/item_surat_placeholders" />
+                <include layout="@layout/item_surat_placeholders" />
+                <include layout="@layout/item_surat_placeholders" />
+                <include layout="@layout/item_surat_placeholders" />
+                <include layout="@layout/item_surat_placeholders" />
+            </LinearLayout>
+        </ScrollView>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_animation"

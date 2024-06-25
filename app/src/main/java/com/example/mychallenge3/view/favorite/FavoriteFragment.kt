@@ -54,6 +54,14 @@ class FavoriteFragment : Fragment() {
                 binding.lottieAnimation.visibility = View.GONE
             }
         }
+
+        favoriteViewModel.loading.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
+        }
     }
 
     private fun showRecyclerList() {

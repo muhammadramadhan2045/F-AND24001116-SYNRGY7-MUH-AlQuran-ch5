@@ -97,6 +97,9 @@ dependencies {
     //work manager
     implementation(libs.androidx.work.runtime.ktx)
 
+    //shimmer
+    implementation (libs.shimmer)
+
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
