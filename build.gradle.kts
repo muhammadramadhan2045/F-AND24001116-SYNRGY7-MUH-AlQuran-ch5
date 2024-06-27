@@ -9,4 +9,6 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.androidLibrary) apply false
+    id("com.google.gms.google-services") version "4.4.2" apply false
+    alias(libs.plugins.googleFirebaseCrashlytics) apply false
 }

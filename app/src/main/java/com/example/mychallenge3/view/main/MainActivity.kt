@@ -15,6 +15,7 @@ import com.example.mychallenge3.view.favorite.FavoriteFragment
 import com.example.mychallenge3.view.login.LoginActivity
 import com.example.mychallenge3.view.profile.ProfileActivity
 import com.example.mychallenge3.view.quran.QuranActivity
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -72,6 +73,11 @@ class MainActivity : AppCompatActivity() {
 
         binding?.cvLogOut?.setOnClickListener {
             viewModel.logout()
+        }
+
+        binding?.btCrash?.setOnClickListener {
+            FirebaseCrashlytics.getInstance().log("Clicked on button")
+            throw RuntimeException("Test Crash") // Force a crash
         }
 
 

@@ -143,6 +143,7 @@
     <string name="lanjut">Lanjut</string>
     <string name="yeah">Yeah!</string>
     <string name="auth_validation">Email dan password tidak boleh kosong</string>
+    <string name="crash_this_app">Crash this app !!</string>
 
 
 </resources>

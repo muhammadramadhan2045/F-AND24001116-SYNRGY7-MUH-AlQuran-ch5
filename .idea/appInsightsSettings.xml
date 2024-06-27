@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.mychallenge3.free.debug" />
+                  <option name="mobileSdkAppId" value="1:652980991961:android:8aed426bc6aac61074cbc8" />
+                  <option name="projectId" value="quran-app-a1f41" />
+                  <option name="projectNumber" value="652980991961" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

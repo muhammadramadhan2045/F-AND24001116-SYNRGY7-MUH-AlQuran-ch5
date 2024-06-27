@@ -4,6 +4,8 @@ plugins {
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs")
     id("com.google.devtools.ksp")
+    id("com.google.gms.google-services")
+    alias(libs.plugins.googleFirebaseCrashlytics)
 }
 
 apply{
@@ -100,8 +102,13 @@ dependencies {
     //shimmer
     implementation (libs.shimmer)
 
+    //firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
+    implementation("com.google.firebase:firebase-analytics")
+
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.crashlytics)
 }
