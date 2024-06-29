@@ -64,8 +64,8 @@ android {
         }
         create("premium") {
             dimension = "version"
-            applicationIdSuffix = ".paid"
-            versionNameSuffix = "-paid"
+            applicationIdSuffix = ".premium"
+            versionNameSuffix = "-premium"
         }
     }
     compileOptions {
