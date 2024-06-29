@@ -8,8 +8,19 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Store Google Services Key
+          command: echo $GOOGLE_SERVICES_KEY | base64 -d > app/google-services.json
+
+      - run:
           name: Store Google Services Account
           command: echo $GOOGLE_SERVICES_ACCOUNT | base64 -d > google-services-account.json
+          
+      - run:
+          name: Authenticate with gcloud
+          command: gcloud auth activate-service-account --key-file=google-services-account.json
+      - run:
+          name: Set Google Application Credentials
+          command: export GOOGLE_APPLICATION_CREDENTIALS=$PWD/google-services-account.json   
           
       - restore_cache:
           key: android-orb-v1-
@@ -42,12 +53,6 @@ jobs:
       - run:
           name: Install Firebase CLI
           command: curl -sL https://firebase.tools | bash
-      - run:
-          name: Configure Firebase Credentials
-          command: export GOOGLE_APPLICATION_CREDENTIALS=$PWD/google-services-account.json
-      - run:
-          name: Authenticate with gcloud
-          command: gcloud auth activate-service-account --key-file=$PWD/google-services-account.json
       - run:
           name: Upload APK to Firebase App Distribution
           command: |
