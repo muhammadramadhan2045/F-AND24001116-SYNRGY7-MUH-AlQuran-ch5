@@ -8,10 +8,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Store Google Services Key
-          command: echo $GOOGLE_SERVICES_KEY | base64 -d > app/google-services.json
-
-      - run:
           name: Store Google Services Account
           command: echo $GOOGLE_SERVICES_ACCOUNT | base64 -d > google-services-account.json
           
@@ -44,5 +40,18 @@ jobs:
           path: app/build/outputs/apk/free/debug/
           destination: artifact-file
       - run:
-          name: Publish APK to Firebase Distribution
-          command: ./gradlew assembleFreeDebug appDistributionUploadDebug
+          name: Install Firebase CLI
+          command: curl -sL https://firebase.tools | bash
+      - run:
+          name: Configure Firebase Credentials
+          command: export GOOGLE_APPLICATION_CREDENTIALS=$PWD/google-services-account.json
+      - run:
+          name: Authenticate with gcloud
+          command: gcloud auth activate-service-account --key-file=$PWD/google-services-account.json
+      - run:
+          name: Upload APK to Firebase App Distribution
+          command: |
+            firebase appdistribution:distribute app/build/outputs/apk/free/debug/app-free-debug.apk \
+              --app $FIREBASE_APP_ID \
+              --token $(gcloud auth application-default print-access-token) \
+              --groups "tester"
