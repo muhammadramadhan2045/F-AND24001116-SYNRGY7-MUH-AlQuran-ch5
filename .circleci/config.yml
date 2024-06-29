@@ -35,3 +35,12 @@ jobs:
       - store_artifacts:
           path: app/build/outputs/apk/free/debug/
           destination: artifact-file
+      - run:
+          name: Install Firebase CLI
+          command: curl -sL https://firebase.tools | bash
+      - run:
+          name: Upload to Firebase App Distribution
+          command: |
+            firebase appdistribution:distribute app/build/outputs/apk/free/debug/app-free-debug.apk \
+              --app $FIREBASE_APP_ID_FREE_DEBUG \
+              --token $FIREBASE_TOKEN \
