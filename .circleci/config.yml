@@ -28,13 +28,13 @@ jobs:
             - ~/.android/cache
       - run:
           name: Run Build
-          command: ./gradlew build
+          command: ./gradlew assembleFreeDebug
       - store_artifacts:
           path: app/build/reports
           destination: reports
       - run:
           name: Run Tests
-          command: ./gradlew lint test
+          command: ./gradlew lintFreeDebug testFreeDebug
       - store_test_results:
           path: app/build/test-results
       - store_artifacts:
