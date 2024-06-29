@@ -45,4 +45,4 @@ jobs:
           destination: artifact-file
       - run:
           name: Publish APK to Firebase Distribution
-          command: ./gradlew assembleFreeDebug appDistributionUploadFreeDebug
+          command: ./gradlew assembleFreeDebug appDistributionUploadDebug
