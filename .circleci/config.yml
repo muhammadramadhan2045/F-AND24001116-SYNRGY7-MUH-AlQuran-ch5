@@ -27,7 +27,7 @@ jobs:
             - ~/.android/build-cache
             - ~/.android/cache
       - run:
-          name: Run Build
+          name: Run Build 
           command: ./gradlew assembleFreeDebug
       - store_artifacts:
           path: app/build/reports

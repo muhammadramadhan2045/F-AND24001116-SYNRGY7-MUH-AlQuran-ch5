@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:652980991961:android:d3a4486e0b37cae574cbc8",
+        "android_client_info": {
+          "package_name": "com.example.mychallenge3.free"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE3ylXEwNhCqkJ-wrnw96OgbPOMF4GclU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:652980991961:android:8aed426bc6aac61074cbc8",
         "android_client_info": {
           "package_name": "com.example.mychallenge3.free.debug"
@@ -48,6 +67,25 @@
         "mobilesdk_app_id": "1:652980991961:android:00f47a511530c56e74cbc8",
         "android_client_info": {
           "package_name": "com.example.mychallenge3.free.release"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE3ylXEwNhCqkJ-wrnw96OgbPOMF4GclU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652980991961:android:f03918cf5bc4df7874cbc8",
+        "android_client_info": {
+          "package_name": "com.example.mychallenge3.premium"
         }
       },
       "oauth_client": [],
