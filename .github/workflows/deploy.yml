@@ -20,7 +20,6 @@ jobs:
 
 
   upload_to_firebase:
-    needs: run_unit_test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
