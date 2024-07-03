@@ -1,9 +1,9 @@
 name: Deploy App to Firebase Distribution
 
 on:
-  pull_request:
-    types:
-      - opened
+  push:
+    branches:
+      - main
 
 jobs:
   run_unit_test:
