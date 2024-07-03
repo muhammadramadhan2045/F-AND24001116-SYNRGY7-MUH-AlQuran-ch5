@@ -7,14 +7,8 @@ jobs:
       - image: cimg/android:2023.11.1
     steps:
       - checkout
-      - run:
-          name: configure build
-          command: bundle update fastlane && gem install bundler && bundle install
       - restore_cache:
           key: android-orb-v1-
-      - run:
-          name: Install Firebase CLI
-          command: npm install -g firebase-tools
       - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
