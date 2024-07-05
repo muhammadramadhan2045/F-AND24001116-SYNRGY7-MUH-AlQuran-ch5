@@ -95,14 +95,14 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="login">Login</string>
+    <string name="login">SIGN IN</string>
     <string name="password">password</string>
     <string name="email">email</string>
     <string name="title_signup_page">Sign Up</string>
-    <string name="name">name</string>
-    <string name="signup">Sign Up</string>
+    <string name="name">nama</string>
+    <string name="signup">SIGN UP</string>
     <string name="logout">Logout</string>
-    <string name="title_login_page">Login</string>
+    <string name="title_login_page">Sign In</string>
     <string name="quran_logo">logo_quran</string>
     <string name="surat_name">nama_surat</string>
     <string name="translate_description">deskripsi</string>
@@ -144,6 +144,7 @@
     <string name="yeah">Yeah!</string>
     <string name="auth_validation">Email dan password tidak boleh kosong</string>
     <string name="crash_this_app">Crash this app !!</string>
+    <string name="does_not_have_account">Tidak mempunyai akun? </string>
 
 
 </resources>

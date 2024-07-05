@@ -10,6 +10,7 @@ import com.example.mychallenge3.view.favorite.FavoriteViewModel
 import com.example.mychallenge3.view.home.HomeViewModel
 import com.example.mychallenge3.view.login.LoginViewModel
 import com.example.mychallenge3.view.main.MainViewModel
+import com.example.mychallenge3.view.signup.SignUpViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -25,5 +26,6 @@ val viewModelModule = module{
     viewModel { FavoriteViewModel(get()) }
     viewModel { MainViewModel(get()) }
     viewModel { LoginViewModel(get()) }
+    viewModel { SignUpViewModel(get()) }
     viewModel { BlurViewModel(get()) }
 }

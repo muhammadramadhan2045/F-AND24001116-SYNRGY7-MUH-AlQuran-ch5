@@ -1,6 +1,7 @@
 package com.example.mychallenge3.domain.usecase
 
 import com.example.mychallenge3.domain.model.Login
+import com.example.mychallenge3.domain.model.Register
 import com.example.mychallenge3.domain.model.UserModel
 import com.example.mychallenge3.domain.repository.IUserRepository
 import kotlinx.coroutines.flow.Flow
@@ -22,7 +23,7 @@ class UserInteractor(private val userRepository: IUserRepository) : UserUseCase 
         return userRepository.login(email, password)
     }
 
-    override suspend fun register(name: String, email: String, password: String): String {
+    override suspend fun register(name: String, email: String, password: String): Register{
         return userRepository.register(name, email, password)
     }
 }

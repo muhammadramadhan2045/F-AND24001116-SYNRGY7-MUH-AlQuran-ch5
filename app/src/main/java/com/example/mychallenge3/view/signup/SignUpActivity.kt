@@ -8,9 +8,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.mychallenge3.R
 import com.example.mychallenge3.databinding.ActivitySignUpBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
+    private val viewModel: SignUpViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,17 +30,53 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.signupButton.setOnClickListener {
+            val name = binding.nameEditText.text.toString()
             val email = binding.emailEditText.text.toString()
+            val password = binding.passwordEditText.text.toString()
 
-            AlertDialog.Builder(this).apply {
-                setTitle("Yeah!")
-                setMessage("Akun dengan $email sudah jadi nih. Yuk, login dan belajar coding.")
-                setPositiveButton("Lanjut") { _, _ ->
-                    finish()
+
+            if (email.isEmpty() || password.isEmpty()) {
+                AlertDialog.Builder(this).apply {
+                    setTitle(getString(R.string.oops))
+                    setMessage(getString(R.string.auth_validation))
+                    setPositiveButton("OK") { _, _ -> }
+                    create()
+                    show()
                 }
-                create()
-                show()
+            } else {
+                viewModel.register(name, email, password)
             }
+
+
+            viewModel.loading.observe(this) {
+                binding.viewFlipper.displayedChild = if (it) 1 else 0
+            }
+
+            viewModel.registerResult.observe(this) { result ->
+                result.onSuccess {
+                    AlertDialog.Builder(this).apply {
+                        setTitle("Yeah!")
+                        setMessage(it.message)
+                        setPositiveButton("Lanjut") { _, _ ->
+                            finish()
+                        }
+                        create()
+                        show()
+                    }
+                }
+
+                result.onFailure {
+                    AlertDialog.Builder(this).apply {
+                        setTitle("Oops!")
+                        setMessage(it.message)
+                        setPositiveButton("OK") { _, _ -> }
+                        create()
+                        show()
+                    }
+                }
+            }
+
+
         }
     }
 }

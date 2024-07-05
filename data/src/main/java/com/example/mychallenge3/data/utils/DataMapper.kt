@@ -6,9 +6,11 @@ import com.example.mychallenge3.data.source.local.entity.SuratEntity
 import com.example.mychallenge3.data.source.remote.response.Data
 import com.example.mychallenge3.data.source.remote.response.DataItem
 import com.example.mychallenge3.data.source.remote.response.LoginResponse
+import com.example.mychallenge3.data.source.remote.response.RegisterResponse
 import com.example.mychallenge3.domain.model.Ayat
 import com.example.mychallenge3.domain.model.Login
 import com.example.mychallenge3.domain.model.LoginResult
+import com.example.mychallenge3.domain.model.Register
 
 object DataMapper {
 
@@ -84,6 +86,14 @@ object DataMapper {
                     token = it.token!!
                 )
             }
+        )
+    }
+
+    fun mapRegisterToDomain(input: RegisterResponse): Register {
+        return Register(
+            error = input.error!!,
+            message = input.message!!
+
         )
     }
 

@@ -5,6 +5,7 @@ import com.example.mychallenge3.domain.model.UserModel
 import com.example.mychallenge3.data.pref.UserPreference
 import com.example.mychallenge3.data.source.AuthRemoteDataSource
 import com.example.mychallenge3.domain.model.Login
+import com.example.mychallenge3.domain.model.Register
 import com.example.mychallenge3.domain.repository.IUserRepository
 import kotlinx.coroutines.flow.Flow
 
@@ -27,7 +28,7 @@ class UserRepository(private val userPreference: UserPreference,private val auth
         return authRemoteDataSource.login(email, password)
     }
 
-    override suspend fun register(name: String, email: String, password: String): String {
+    override suspend fun register(name: String, email: String, password: String): Register {
         return authRemoteDataSource.register(name, email, password)
     }
 

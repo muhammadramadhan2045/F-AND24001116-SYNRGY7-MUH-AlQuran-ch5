@@ -1,6 +1,7 @@
 package com.example.mychallenge3.data.source.remote.network
 
 import com.example.mychallenge3.data.source.remote.response.LoginResponse
+import com.example.mychallenge3.data.source.remote.response.RegisterResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
@@ -21,6 +22,6 @@ interface AuthService {
         @Field("name") name: String,
         @Field("email") email: String,
         @Field("password") password: String
-    ): LoginResponse
+    ): RegisterResponse
 
 }
