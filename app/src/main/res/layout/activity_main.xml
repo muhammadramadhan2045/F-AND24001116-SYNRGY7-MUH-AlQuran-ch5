@@ -58,6 +58,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginVertical="10dp"
+                android:contentDescription="@string/bismillah"
                 android:src="@drawable/ic_muslim_family"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

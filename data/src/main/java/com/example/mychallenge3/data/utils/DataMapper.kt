@@ -9,7 +9,6 @@ import com.example.mychallenge3.data.source.remote.response.LoginResponse
 import com.example.mychallenge3.data.source.remote.response.RegisterResponse
 import com.example.mychallenge3.domain.model.Ayat
 import com.example.mychallenge3.domain.model.Login
-import com.example.mychallenge3.domain.model.LoginResult
 import com.example.mychallenge3.domain.model.Register
 
 object DataMapper {
@@ -79,13 +78,9 @@ object DataMapper {
         return Login(
             error = input.error!!,
             message = input.message!!,
-            loginResult = input.loginResult?.let {
-                LoginResult(
-                    name = it.name!!,
-                    userId = it.userId!!,
-                    token = it.token!!
-                )
-            }
+            name = input.loginResult?.name,
+            userId = input.loginResult?.userId,
+            token = input.loginResult?.token
         )
     }
 
@@ -96,6 +91,8 @@ object DataMapper {
 
         )
     }
+
+
 
 
 }

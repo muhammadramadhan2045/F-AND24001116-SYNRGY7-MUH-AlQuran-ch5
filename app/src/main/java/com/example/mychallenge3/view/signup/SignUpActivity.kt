@@ -14,6 +14,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private val viewModel: SignUpViewModel by viewModel()
 
+    private var currentDialog: AlertDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -46,37 +47,35 @@ class SignUpActivity : AppCompatActivity() {
             } else {
                 viewModel.register(name, email, password)
             }
+        }
 
+        viewModel.loading.observe(this) {
+            binding.viewFlipper.displayedChild = if (it) 1 else 0
+        }
 
-            viewModel.loading.observe(this) {
-                binding.viewFlipper.displayedChild = if (it) 1 else 0
-            }
-
-            viewModel.registerResult.observe(this) { result ->
-                result.onSuccess {
-                    AlertDialog.Builder(this).apply {
+        viewModel.registerResult.observe(this) { result ->
+            if (result != null) {
+                if (result.error) {
+                    currentDialog = AlertDialog.Builder(this).apply {
+                        setTitle("Oops!")
+                        setMessage(result.message)
+                        setPositiveButton("OK") { _, _ -> }
+                        create()
+                    }.show()
+                } else {
+                    currentDialog = AlertDialog.Builder(this).apply {
                         setTitle("Yeah!")
-                        setMessage(it.message)
+                        setMessage(result.message)
                         setPositiveButton("Lanjut") { _, _ ->
                             finish()
                         }
                         create()
-                        show()
-                    }
-                }
 
-                result.onFailure {
-                    AlertDialog.Builder(this).apply {
-                        setTitle("Oops!")
-                        setMessage(it.message)
-                        setPositiveButton("OK") { _, _ -> }
-                        create()
-                        show()
-                    }
+                    }.show()
+
                 }
             }
-
-
         }
+
     }
 }

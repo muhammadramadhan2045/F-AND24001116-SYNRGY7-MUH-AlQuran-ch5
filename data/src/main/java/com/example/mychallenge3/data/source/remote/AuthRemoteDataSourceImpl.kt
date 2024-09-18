@@ -5,8 +5,8 @@ import com.example.mychallenge3.data.source.AuthRemoteDataSource
 import com.example.mychallenge3.data.source.remote.network.AuthService
 import com.example.mychallenge3.data.utils.DataMapper
 import com.example.mychallenge3.domain.model.Login
-import com.example.mychallenge3.domain.model.LoginResult
 import com.example.mychallenge3.domain.model.Register
+import com.google.gson.Gson
 import retrofit2.HttpException
 
 class AuthRemoteDataSourceImpl(
@@ -19,61 +19,84 @@ class AuthRemoteDataSourceImpl(
 
             )
 
+
     override suspend fun login(email: String, password: String): Login? {
         return if (users.contains(email to password)) {
             Login(
                 error = false,
                 message = "success",
-                loginResult = LoginResult(
-                    name = "Admin",
-                    token = "admin_token",
-                    userId = "3242323"
-                )
+                name = "Admin",
+                token = "admin_token",
+                userId = "3242323"
             )
         } else {
+         var message : String? = null
             try {
                 val response = auhtService.login(email, password)
-                return if (response.error == false && response.message == "success") {
+                message = response.message
+                return if (response.error==false && message == "success") {
                     DataMapper.mapLoginResponseToDomain(response)
                 } else {
-                    Log.e("AuthRemoteDataSourceImpl", "Login failed: ${response.message}")
-                    null
+                    Log.d("AuthRemoteDataSourceImpl", "Login failed: $message")
+                    return Login(
+                        error = true,
+                        message = message ?: "Failed to login",
+                        name = null,
+                        token = null,
+                        userId = null
+                    )
                 }
-            } catch (e: HttpException) {
-                Log.e("AuthRemoteDataSourceImpl", "HTTP exception: ${e.message}")
-                null
             } catch (e: Exception) {
-                Log.e("AuthRemoteDataSourceImpl", "Exception: ${e.message}")
-                null
+                when (e) {
+                    is HttpException -> {
+                        val errorBody = e.response()?.errorBody()?.string()
+                        message = Gson().fromJson(errorBody, Login::class.java).message
+                        Log.d("AuthRemoteDataSourceImpl", "Login failed: $errorBody")
+                    }
+                    else -> {
+                        Log.d("AuthRemoteDataSourceImplement", "Login failed: ${e.localizedMessage}")
+                    }
+                }
+                return Login(
+                    error = true,
+                    message = message ?: "Failed to login",
+                    name = null,
+                    token = null,
+                    userId = null
+                )
             }
         }
-
     }
 
+
     override suspend fun register(name: String, email: String, password: String): Register {
-        val response = auhtService.register(name, email, password)
+        var message: String? = null
         try {
+            val response = auhtService.register(name, email, password)
             if (response.error == false && response.message == "User created")
                 return DataMapper.mapRegisterToDomain(response)
             else {
                 Log.e("AuthRemoteDataSourceImpl", "Register failed: ${response.message}")
                 return Register(
                     error = true,
-                    message = response.message?:"Failed to register"
+                    message = response.message ?: "Failed to register"
                 )
             }
 
-        } catch (e: HttpException) {
-            Log.e("AuthRemoteDataSourceImpl", "HTTP exception: ${e.message}")
-            return Register(
-                error = true,
-                message = response.message?:"Failed to register"
-            )
         } catch (e: Exception) {
-            Log.e("AuthRemoteDataSourceImpl", "Exception: ${e.message}")
+            when (e) {
+                is HttpException -> {
+                    val errorBody = e.response()?.errorBody()?.string()
+                    message = Gson().fromJson(errorBody, Register::class.java).message
+                    Log.d("AuthRemoteDataSourceImpl", "Register failed: $errorBody")
+                }
+                else -> {
+                    Log.d("AuthRemoteDataSourceImplement", "Register failed: ${e.localizedMessage}")
+                }
+            }
             return Register(
                 error = true,
-                message = response.message?:"Failed to register"
+                message = message ?: "Failed to register"
             )
         }
 

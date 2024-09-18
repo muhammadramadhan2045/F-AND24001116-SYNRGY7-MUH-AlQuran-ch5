@@ -18,6 +18,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class LoginActivity : AppCompatActivity() {
     private val viewModel: LoginViewModel by viewModel()
     private lateinit var binding: ActivityLoginBinding
+
+    private var currentDialog: AlertDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -61,39 +63,36 @@ class LoginActivity : AppCompatActivity() {
         }
 
         viewModel.loginResult.observe(this) { result ->
-            result.onSuccess {
-                val token = it.loginResult?.token ?: ""
-                viewModel.saveSession(
-                    UserModel(
-                        email = binding.emailEditText.text.toString(),
-                        token = token
+            if (result != null) {
+                if (result.error) {
+                    currentDialog = AlertDialog.Builder(this).apply {
+                        setTitle(getString(R.string.oops))
+                        setMessage(result.message)
+                        setPositiveButton(getString(R.string.ok)) { _, _ -> }
+                        create()
+                    }.show()
+                } else {
+                    val token = result.token ?: ""
+                    viewModel.saveSession(
+                        UserModel(
+                            email = binding.emailEditText.text.toString(),
+                            token = token
+                        )
                     )
-                )
-                AlertDialog.Builder(this).apply {
-                    setTitle(getString(R.string.yeah))
-                    setMessage(getString(R.string.login_success_msg))
-                    setPositiveButton(getString(R.string.lanjut)) { _, _ ->
-                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                        intent.flags =
-                            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                        startActivity(intent)
-                        finish()
-                    }
-                    create()
-                    show()
-                }
-            }
-            result.onFailure {
-                AlertDialog.Builder(this).apply {
-                    setTitle(getString(R.string.oops))
-                    setMessage(getString(R.string.logn_failed_msg))
-                    setPositiveButton(getString(R.string.ok)) { _, _ -> }
-                    create()
-                    show()
+                    currentDialog=AlertDialog.Builder(this).apply {
+                        setTitle(getString(R.string.yeah))
+                        setMessage(getString(R.string.login_success_msg))
+                        setPositiveButton(getString(R.string.lanjut)) { _, _ ->
+                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                            intent.flags =
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
+                            finish()
+                        }
+                        create()
+                    }.show()
                 }
             }
         }
     }
-
-
 }
