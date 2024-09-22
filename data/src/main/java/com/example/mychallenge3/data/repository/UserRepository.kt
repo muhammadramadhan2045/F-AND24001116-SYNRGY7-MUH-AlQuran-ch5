@@ -20,7 +20,7 @@ class UserRepository(private val userPreference: UserPreference,private val auth
         return userPreference.getSession()
     }
 
-    override suspend fun logout() {
+    override suspend fun logout() { 
         userPreference.logout()
     }
 

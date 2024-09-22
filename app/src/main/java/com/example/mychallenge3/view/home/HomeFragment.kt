@@ -13,8 +13,6 @@ import com.example.mychallenge3.R
 import com.example.mychallenge3.adapter.ListSurahAdapter
 import com.example.mychallenge3.domain.model.Surat
 import com.example.mychallenge3.databinding.FragmentHomeBinding
-import com.example.mychallenge3.view.login.LoginActivity
-import com.example.mychallenge3.view.profile.ProfileActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

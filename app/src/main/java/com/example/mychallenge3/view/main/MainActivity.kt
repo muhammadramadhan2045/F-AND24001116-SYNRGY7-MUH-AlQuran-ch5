@@ -3,26 +3,20 @@ package com.example.mychallenge3.view.main
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.mychallenge3.R
 import com.example.mychallenge3.databinding.ActivityMainBinding
-import com.example.mychallenge3.view.favorite.FavoriteFragment
-import com.example.mychallenge3.view.login.LoginActivity
-import com.example.mychallenge3.view.profile.ProfileActivity
-import com.example.mychallenge3.view.quran.QuranActivity
-import com.google.firebase.crashlytics.FirebaseCrashlytics
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
-    private val viewModel : MainViewModel by viewModel()
+    private val viewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
@@ -39,53 +33,19 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getSession().observe(this) { user ->
             if (!user.isLogin) {
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }
-            binding?.tvUserName?.text = user.email
-        }
 
-
-
-        binding?.tvDayDate?.text = getCurrentTime()
-        binding?.cvReadQuran?.setOnClickListener {
-            startActivity(Intent(this, QuranActivity::class.java))
-        }
-
-
-        binding?.cvMuslimProfile?.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
-        }
-
-
-        binding?.cvPrayTime?.setOnClickListener {
-            AlertDialog.Builder(this)
-                .setTitle("Segera Hadir")
-                .setMessage("Fitur ini akan segera hadir, tunggu update selanjutnya ya!")
-                .setPositiveButton("OK") { dialog, _ ->
-                    dialog.dismiss()
+                val navOptions =
+                    NavOptions.Builder().setPopUpTo(R.id.mainDashboardFragment, true).build()
+                if (findNavController(R.id.container).currentDestination?.id == R.id.mainDashboardFragment) {
+                    findNavController(R.id.container).navigate(
+                        R.id.action_mainDashboardFragment_to_loginFragment,
+                        null,
+                        navOptions
+                    )
                 }
-                .setIcon(R.drawable.ic_quran)
-                .show()
-
+            }
         }
-
-
-        binding?.cvLogOut?.setOnClickListener {
-            viewModel.logout()
-        }
-
-        binding?.btCrash?.setOnClickListener {
-            FirebaseCrashlytics.getInstance().log("Clicked on button")
-            throw RuntimeException("Test Crash") // Force a crash
-        }
-
-
     }
-    private fun getCurrentTime(): String {
-        val calendar = Calendar.getInstance()
-        val dateFormat = SimpleDateFormat("EEEE, dd MMM", Locale.getDefault())
-        return dateFormat.format(calendar.time)
-    }
+
 
 }

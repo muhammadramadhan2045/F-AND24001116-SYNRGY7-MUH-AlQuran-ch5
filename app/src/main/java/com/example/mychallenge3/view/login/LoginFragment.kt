@@ -2,43 +2,49 @@ package com.example.mychallenge3.view.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.enableEdgeToEdge
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.example.mychallenge3.R
+import com.example.mychallenge3.databinding.FragmentLoginBinding
 import com.example.mychallenge3.domain.model.UserModel
-import com.example.mychallenge3.databinding.ActivityLoginBinding
 import com.example.mychallenge3.view.main.MainActivity
-import com.example.mychallenge3.view.signup.SignUpActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginActivity : AppCompatActivity() {
+class LoginFragment : Fragment() {
     private val viewModel: LoginViewModel by viewModel()
-    private lateinit var binding: ActivityLoginBinding
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
 
     private var currentDialog: AlertDialog? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-        supportActionBar?.hide()
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        // Inflate the layout for this fragment
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         setupAction()
 
         binding.goToSignUpButton.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
+            val toSignUpFragment = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
+            findNavController().navigate(toSignUpFragment)
         }
     }
-
 
     private fun setupAction() {
         binding.loginButton.setOnClickListener {
@@ -46,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.passwordEditText.text.toString()
 
             if (email.isEmpty() || password.isEmpty()) {
-                AlertDialog.Builder(this).apply {
+                AlertDialog.Builder(requireContext()).apply {
                     setTitle(getString(R.string.oops))
                     setMessage(getString(R.string.auth_validation))
                     setPositiveButton("OK") { _, _ -> }
@@ -58,14 +64,14 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.loading.observe(this) {
+        viewModel.loading.observe(requireActivity()) {
             binding.viewFlipper.displayedChild = if (it) 1 else 0
         }
 
-        viewModel.loginResult.observe(this) { result ->
+        viewModel.loginResult.observe(requireActivity()) { result ->
             if (result != null) {
                 if (result.error) {
-                    currentDialog = AlertDialog.Builder(this).apply {
+                    currentDialog = AlertDialog.Builder(requireContext()).apply {
                         setTitle(getString(R.string.oops))
                         setMessage(result.message)
                         setPositiveButton(getString(R.string.ok)) { _, _ -> }
@@ -79,15 +85,20 @@ class LoginActivity : AppCompatActivity() {
                             token = token
                         )
                     )
-                    currentDialog=AlertDialog.Builder(this).apply {
+                    currentDialog = AlertDialog.Builder(requireContext()).apply {
                         setTitle(getString(R.string.yeah))
                         setMessage(getString(R.string.login_success_msg))
                         setPositiveButton(getString(R.string.lanjut)) { _, _ ->
-                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                            intent.flags =
-                                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                            startActivity(intent)
-                            finish()
+
+                            val navOptions =
+                                NavOptions.Builder().setPopUpTo(R.id.loginFragment, true).build()
+                            if (findNavController().currentDestination?.id == R.id.loginFragment) {
+                                findNavController().navigate(
+                                    R.id.action_loginFragment_to_mainDashboardFragment,
+                                    null,
+                                    navOptions
+                                )
+                            }
                         }
                         create()
                     }.show()

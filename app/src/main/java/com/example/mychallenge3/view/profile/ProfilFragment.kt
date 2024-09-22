@@ -4,58 +4,64 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.work.WorkInfo
 import com.example.mychallenge3.R
-import com.example.mychallenge3.databinding.ActivityProfileBinding
+import com.example.mychallenge3.databinding.FragmentProfilBinding
 import com.example.mychallenge3.worker.KEY_IMAGE_URI
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityProfileBinding
+class ProfilFragment : Fragment() {
 
+    private var _binding: FragmentProfilBinding? = null
+    private val binding get() = _binding!!
     private var currentImageUri: Uri? = null
 
     private val viewModel: BlurViewModel by viewModel()
+
 
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
         if (isGranted) {
-            Toast.makeText(this, "Permission Granted", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Permission Granted", Toast.LENGTH_LONG).show()
         } else {
-            Toast.makeText(this, "Permission Denied", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Permission Denied", Toast.LENGTH_LONG).show()
         }
-
     }
 
     private fun allPermissionGranted() =
         ContextCompat.checkSelfPermission(
-            this,
+            requireContext(),
             REQUIRED_PERMISSION,
         ) == PackageManager.PERMISSION_GRANTED
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        binding = ActivityProfileBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        // Inflate the layout for this fragment
+        _binding = FragmentProfilBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         if (!allPermissionGranted()) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
         }
@@ -76,7 +82,7 @@ class ProfileActivity : AppCompatActivity() {
             viewModel.cancelWork()
         }
 
-        viewModel.outputWorkInfos.observe(this, workInfosObserver())
+        viewModel.outputWorkInfos.observe(requireActivity(), workInfosObserver())
 
     }
 
@@ -143,7 +149,7 @@ class ProfileActivity : AppCompatActivity() {
             }
 
     private fun openCamera(){
-        currentImageUri = getImageUri(this)
+        currentImageUri = getImageUri(requireContext())
         launcherIntentCamera.launch(currentImageUri!!)
 
 
@@ -186,5 +192,4 @@ class ProfileActivity : AppCompatActivity() {
     companion object {
         private const val REQUIRED_PERMISSION = android.Manifest.permission.CAMERA
     }
-
 }

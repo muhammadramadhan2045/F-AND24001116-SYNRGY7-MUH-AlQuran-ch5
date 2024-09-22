@@ -1,31 +1,39 @@
 package com.example.mychallenge3.view.signup
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.fragment.findNavController
 import com.example.mychallenge3.R
-import com.example.mychallenge3.databinding.ActivitySignUpBinding
+import com.example.mychallenge3.databinding.FragmentSignUpBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SignUpActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySignUpBinding
+class SignUpFragment : Fragment() {
+
+    private var _binding: FragmentSignUpBinding? = null
+    private val binding get()= _binding!!
+    private var currentDialog: AlertDialog? = null
+
     private val viewModel: SignUpViewModel by viewModel()
 
-    private var currentDialog: AlertDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        binding = ActivitySignUpBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-        supportActionBar?.hide()
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this
+        _binding= FragmentSignUpBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupAction()
     }
 
@@ -37,7 +45,7 @@ class SignUpActivity : AppCompatActivity() {
 
 
             if (email.isEmpty() || password.isEmpty()) {
-                AlertDialog.Builder(this).apply {
+                AlertDialog.Builder(requireContext()).apply {
                     setTitle(getString(R.string.oops))
                     setMessage(getString(R.string.auth_validation))
                     setPositiveButton("OK") { _, _ -> }
@@ -49,25 +57,25 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.loading.observe(this) {
+        viewModel.loading.observe(requireActivity()) {
             binding.viewFlipper.displayedChild = if (it) 1 else 0
         }
 
-        viewModel.registerResult.observe(this) { result ->
+        viewModel.registerResult.observe(requireActivity()) { result ->
             if (result != null) {
                 if (result.error) {
-                    currentDialog = AlertDialog.Builder(this).apply {
+                    currentDialog = AlertDialog.Builder(requireContext()).apply {
                         setTitle("Oops!")
                         setMessage(result.message)
                         setPositiveButton("OK") { _, _ -> }
                         create()
                     }.show()
                 } else {
-                    currentDialog = AlertDialog.Builder(this).apply {
+                    currentDialog = AlertDialog.Builder(requireContext()).apply {
                         setTitle("Yeah!")
                         setMessage(result.message)
                         setPositiveButton("Lanjut") { _, _ ->
-                            finish()
+                            findNavController().popBackStack()
                         }
                         create()
 
